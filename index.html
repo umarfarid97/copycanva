@@ -4,415 +4,227 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nafisya &amp; Umar — Majlis Walimatulurus</title>
-  <meta name="description" content="MAJLIS WALIMATULURUS — Nafisya &amp; Umar. 2 January 2027, Saturday.">
+  <meta name="description" content="MAJLIS WALIMATULURUS — Nafisya &amp; Umar. 2 Januari 2027, Sabtu.">
 
   <!-- Google Fonts Preconnect & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Italiana&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=1.2">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #120e0b;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #120e0b;
+      transition: opacity 0.6s ease;
+    }
+
+    .video-wrapper.fade-out {
+      opacity: 0;
+    }
+
+    .intro-video {
+      width: 100%;
+      height: 100%;
+      max-width: 100vw;
+      max-height: 100vh;
+      object-fit: contain;
+      background-color: #120e0b;
+    }
+
+    /* Top Overlay Controls */
+    .overlay-controls {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .ctrl-btn {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 500;
+      padding: 8px 18px;
+      background: rgba(247, 231, 205, 0.92);
+      color: #6f3f01;
+      border: 1px solid rgba(189, 133, 98, 0.4);
+      border-radius: 50px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+    }
+
+    .ctrl-btn:hover {
+      background: #f7e7cd;
+      color: #bd8562;
+      transform: translateY(-1px);
+    }
+
+    .ctrl-btn.skip-btn {
+      background: #bd8562;
+      color: #f7e7cd;
+      border-color: #bd8562;
+      font-weight: 600;
+    }
+
+    .ctrl-btn.skip-btn:hover {
+      background: #a56f4d;
+      color: #fff6e6;
+    }
+
+    /* Fallback start prompt */
+    .play-fallback {
+      position: absolute;
+      z-index: 101;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-play-invite {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 14px 44px;
+      background-color: #bd8562;
+      color: #f7e7cd;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+      transition: all 0.25s ease;
+    }
+
+    .btn-play-invite:hover {
+      background-color: #a56f4d;
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ==================== VIDEO INTRO SPLASH SCREEN ==================== -->
-  <div id="videoIntroOverlay" class="video-intro-overlay">
-    <div class="video-container">
-      <video id="introVideo" class="intro-video" playsinline preload="auto" muted autoplay>
-        <source src="assets/media/intro.mp4" type="video/mp4">
-        Pelayar anda tidak menyokong tag video.
-      </video>
-      
-      <!-- Video Controls: Skip & Sound Toggle -->
-      <div class="video-overlay-controls">
-        <button id="unmuteBtn" class="video-ctrl-btn" type="button" aria-label="Buka Bunyi" title="Buka Bunyi">
-          <svg class="icon-sound" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-          </svg>
-          <span id="soundLabel">Buka Bunyi</span>
-        </button>
-        
-        <button id="skipVideoBtn" class="video-ctrl-btn skip-btn" type="button" aria-label="Langkau ke Laman Utama">
-          <span>Langkau</span> &rarr;
-        </button>
-      </div>
+  <div class="video-wrapper" id="videoWrapper">
+    <video id="introVideo" class="intro-video" playsinline preload="auto" muted autoplay>
+      <source src="assets/media/intro.mp4" type="video/mp4">
+      Pelayar anda tidak menyokong tag video.
+    </video>
 
-      <!-- Play prompt fallback if browser requires user interaction -->
-      <div id="playPrompt" class="play-prompt" style="display: none;">
-        <button id="startPlayBtn" class="btn-rsvp" type="button">Tonton Video</button>
-      </div>
+    <!-- Top Controls: Sound Toggle (Left) & Skip Link (Right) -->
+    <div class="overlay-controls">
+      <button id="unmuteBtn" class="ctrl-btn" type="button" aria-label="Buka Bunyi" title="Buka Bunyi">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <span id="soundLabel">Buka Bunyi</span>
+      </button>
+
+      <a href="main.html" id="skipBtn" class="ctrl-btn skip-btn" aria-label="Langkau ke Laman Utama">
+        <span>Langkau</span> &rarr;
+      </a>
+    </div>
+
+    <!-- Fallback if browser policy blocks autoplay -->
+    <div id="playFallback" class="play-fallback" style="display: none;">
+      <button id="startPlayBtn" class="btn-play-invite" type="button">Buka Jemputan</button>
     </div>
   </div>
 
-  <!-- Floating Navigation Bar -->
-  <header class="site-header" id="navbar">
-    <nav class="nav-container">
-      <a href="#hero" class="nav-logo">Nafisya <span>&amp;</span> Umar</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Buksan ang menu">
-        <span class="hamburger"></span>
-      </button>
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#hero" class="nav-link active">Laman Utama</a></li>
-        <li><a href="#our-story" class="nav-link">Kisah Kami</a></li>
-        <li><a href="#details" class="nav-link">Butiran</a></li>
-        <li><a href="#schedule" class="nav-link">Atur Cara</a></li>
-        <li><a href="#registry" class="nav-link">Hadiah</a></li>
-        <li><a href="#faqs" class="nav-link">Soalan Lazim</a></li>
-        <li><a href="#contact" class="nav-link">Hubungi</a></li>
-        <li><button class="nav-btn-rsvp open-rsvp-modal">RSVP</button></li>
-      </ul>
-    </nav>
-  </header>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const videoWrapper = document.getElementById('videoWrapper');
+      const introVideo = document.getElementById('introVideo');
+      const unmuteBtn = document.getElementById('unmuteBtn');
+      const soundLabel = document.getElementById('soundLabel');
+      const skipBtn = document.getElementById('skipBtn');
+      const playFallback = document.getElementById('playFallback');
+      const startPlayBtn = document.getElementById('startPlayBtn');
 
-  <main>
-    <!-- ==================== SECTION 0: HERO / HOME ==================== -->
-    <section class="section section-hero" id="hero">
-      <!-- Decorative Corner & Edge Vectors -->
-      <img src="assets/media/floral_corner_left.svg" alt="" class="hero-dec dec-top-left" aria-hidden="true">
-      <img src="assets/media/foliage_left.svg" alt="" class="hero-dec dec-mid-left" aria-hidden="true">
-      <img src="assets/media/floral_corner_right.svg" alt="" class="hero-dec dec-top-right" aria-hidden="true">
-      <img src="assets/media/floral_accent.svg" alt="" class="hero-dec dec-mid-right" aria-hidden="true">
+      let navigated = false;
+      const goToMainPage = () => {
+        if (navigated) return;
+        navigated = true;
+        videoWrapper.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = 'main.html';
+        }, 500);
+      };
 
-      <div class="hero-container">
-        <p class="hero-tagline">
-          MAJLIS WALIMATULURUS
-        </p>
+      // 1. When video finishes playing, automatically navigate to main page
+      introVideo.addEventListener('ended', goToMainPage);
 
-        <div class="hero-names-wrap">
-          <h1 class="hero-title">
-            <span class="name-part name-bride">Nafisya</span>
-            <span class="ampersand">&amp;</span>
-            <span class="name-part name-groom">Umar</span>
-          </h1>
-        </div>
+      // 2. Skip button click
+      if (skipBtn) {
+        skipBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          goToMainPage();
+        });
+      }
 
-        <p class="hero-datetime">
-          2 Januari 2027, Sabtu
-        </p>
+      // 3. Unmute / Mute toggle
+      if (unmuteBtn) {
+        unmuteBtn.addEventListener('click', () => {
+          if (introVideo.muted) {
+            introVideo.muted = false;
+            if (soundLabel) soundLabel.textContent = 'Matikan Bunyi';
+          } else {
+            introVideo.muted = true;
+            if (soundLabel) soundLabel.textContent = 'Buka Bunyi';
+          }
+        });
+      }
 
-        <div class="hero-cta">
-          <button type="button" class="btn-rsvp open-rsvp-modal">RSVP</button>
-        </div>
-      </div>
-    </section>
+      // 4. Autoplay handling
+      const playPromise = introVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Autoplay was prevented by browser policy, show manual start button
+          if (playFallback) playFallback.style.display = 'flex';
+        });
+      }
 
-    <!-- ==================== SECTION 1: MONOGRAM & FEATURED PHOTO ==================== -->
-    <section class="section section-monogram" id="monogram">
-      <div class="monogram-bg-wrap">
-        <img src="assets/media/couple_monogram_bg.jpg" alt="Nafisya &amp; Umar" class="monogram-bg-img">
-        <div class="monogram-overlay"></div>
-      </div>
-      <div class="monogram-content">
-        <div class="monogram-letters">
-          <span class="mono-char mono-j">N</span>
-          <span class="mono-amp">&amp;</span>
-          <span class="mono-char mono-b">U</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 2: OUR STORY ("Kisah Kami") ==================== -->
-    <section class="section section-story" id="our-story">
-      <div class="container story-grid">
-        <div class="story-image-col">
-          <div class="arch-frame">
-            <div class="arch-inner">
-              <img src="assets/media/couple_our_story.jpg" alt="Foto Kenangan Nafisya &amp; Umar" class="story-img">
-            </div>
-          </div>
-        </div>
-
-        <div class="story-text-col">
-          <h2 class="section-heading text-left">Kisah Kami</h2>
-          
-          <p class="story-intro">
-            Setiap pertemuan telah tertulis indah di Luh Mahfuz. Dari saat pertama kami berkenalan hingga terbinanya ikatan suci ini, perjalanan kami dipenuhi dengan kasih sayang, persefahaman, dan limpahan doa restu keluarga tercinta. Kami amat bersyukur dapat berkongsi hari bahagia ini bersama anda semua.
-          </p>
-
-          <div class="story-block">
-            <h3 class="story-subheading">Dari Sahabat Ke Jenjang Pelamin</h3>
-            <p class="story-body">
-              Bermula sebagai sahabat yang saling berkongsi suka dan duka, persahabatan yang terjalin akhirnya membuahkan rasa cinta dan komitmen tulus untuk melangkah bersama membina mahligai impian.
-            </p>
-          </div>
-
-          <div class="story-block">
-            <h3 class="story-subheading">Menuju Masa Hadapan</h3>
-            <p class="story-body">
-              Dengan penuh rasa rendah diri, kami memohon doa daripada semua agar bahtera perkahwinan yang dibina ini sentiasa diberkati, sakinah, mawaddah, warahmah, dan berkekalan hingga ke jannah.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 3: DETAILS ("Maklumat Majlis") ==================== -->
-    <section class="section section-details" id="details">
-      <div class="container">
-        <h2 class="section-heading text-center">Maklumat Majlis</h2>
-
-        <div class="details-grid">
-          <!-- Card 1: Lokasi Majlis -->
-          <div class="details-card">
-            <div class="details-icon-wrap">
-              <img src="assets/media/church_venue.svg" alt="Lokasi Majlis" class="details-icon">
-            </div>
-            <h3 class="details-title">Lokasi Majlis</h3>
-            <p class="details-desc">
-              Majlis persandingan kami akan diadakan di Bahay Playa (atau dewan pilihan). Bersama kita menikmati hidangan lazat, alunan muzik yang mendamaikan, dan meraikan ikatan cinta dua hati.
-            </p>
-          </div>
-
-          <!-- Card 2: Tema Pakaian -->
-          <div class="details-card">
-            <div class="details-icon-wrap dress-icons-wrap">
-              <img src="assets/media/barong_attire.svg" alt="Pakaian Pengantin Lelaki" class="details-icon icon-attire">
-              <img src="assets/media/saya_dress.svg" alt="Pakaian Pengantin Perempuan" class="details-icon icon-attire">
-            </div>
-            <h3 class="details-title">Tema Pakaian</h3>
-            <p class="details-desc">
-              Pakaian tradisional Melayu atau pakaian formal sopan bertemakan warna tanah (earth tones) atau warna pastel/lembut. Yang penting anda berasa selesa dan bersedia untuk meraikan bersama kami!
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 4: SCHEDULE ("Atur Cara Majlis") ==================== -->
-    <section class="section section-schedule" id="schedule">
-      <div class="container schedule-grid">
-        <div class="schedule-art-col">
-          <img src="assets/media/floral_vertical.svg" alt="" class="vertical-botanical" aria-hidden="true">
-        </div>
-
-        <div class="schedule-content-col">
-          <h2 class="section-heading text-left">Atur Cara Majlis</h2>
-
-          <div class="timeline-list">
-            <!-- Timeline Item 1 -->
-            <div class="timeline-item">
-              <span class="timeline-meta">Dewan Utama • 123 Anywhere St.</span>
-              <h3 class="timeline-title">Ketibaan Tetamu &amp; Minuman Alu-aluan</h3>
-              <p class="timeline-desc">Sesi menyambut ketibaan para tetamu dan sesi bergambar santai.</p>
-            </div>
-
-            <div class="timeline-divider"></div>
-
-            <!-- Timeline Item 2 -->
-            <div class="timeline-item">
-              <span class="timeline-meta">Dewan Utama • 123 Anywhere St.</span>
-              <h3 class="timeline-title">Perarakan Masuk Mempelai &amp; Jamuan Makan</h3>
-              <p class="timeline-desc">Perarakan masuk raja sehari, bacaan doa, dan jamuan makan bermula jam 12:30 tengah hari / 7:00 malam.</p>
-            </div>
-
-            <div class="timeline-divider"></div>
-
-            <!-- Timeline Item 3 -->
-            <div class="timeline-item">
-              <span class="timeline-meta">Dewan Utama / Taman • 123 Anywhere St.</span>
-              <h3 class="timeline-title">Sesi Ramah Mesra &amp; Bergambar</h3>
-              <p class="timeline-desc">Sesi ramah mesra bersama pengantin, sesi bergambar kenangan bersama tetamu, dan bersurai.</p>
-            </div>
-            
-            <div class="timeline-divider"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 5: GIFT REGISTRY ("Hadiah & Ingatan Tulus") ==================== -->
-    <section class="section section-registry" id="registry">
-      <div class="container registry-grid">
-        <div class="registry-content-col">
-          <h2 class="section-heading text-left">Hadiah &amp; Ingatan Tulus</h2>
-          <h3 class="registry-subtitle">Kehadiran dan doa restu anda semua adalah hadiah yang paling bermakna buat kami!</h3>
-          
-          <p class="registry-desc">
-            Kehadiran para tetamu sekalian sudah cukup menggembirakan hati kami. Namun sekiranya anda ingin menitipkan hadiah ingatan atau sumbangan tanda restu untuk memulakan fasa baharu kehidupan kami, kami amat menghargai keikhlasan dan ingatan tulus anda.
-          </p>
-
-          <!-- Contact & QR Badge -->
-          <div class="registry-card">
-            <div class="registry-qr-box">
-              <img src="assets/media/gift_box_qr.svg" alt="Kod QR Hadiah" class="registry-qr-icon">
-            </div>
-            <div class="registry-card-info">
-              <p class="registry-info-label">Hubungi kami atau rujuk maklumat hadiah:</p>
-              <p class="registry-info-item"><strong>Telefon:</strong> <a href="tel:+1234567890">+123 456 7890</a></p>
-              <p class="registry-info-item"><strong>Emel:</strong> <a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></p>
-            </div>
-          </div>
-        </div>
-
-        <div class="registry-art-col">
-          <img src="assets/media/foliage_branch.svg" alt="" class="registry-botanical" aria-hidden="true">
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 6: FAQS ("Soalan Lazim") ==================== -->
-    <section class="section section-faqs" id="faqs">
-      <div class="container faqs-grid">
-        <div class="faqs-art-col">
-          <img src="assets/media/floral_vertical.svg" alt="" class="vertical-botanical" aria-hidden="true">
-        </div>
-
-        <div class="faqs-content-col">
-          <h2 class="section-heading text-left">Soalan Lazim</h2>
-
-          <div class="faqs-list">
-            <!-- FAQ 1 -->
-            <div class="faq-item">
-              <h3 class="faq-question">Bolehkah saya membawa tetamu tambahan atau kanak-kanak?</h3>
-              <p class="faq-answer">
-                Bagi memastikan keselesaan semua tetamu dan kerana kapasiti tempat duduk yang terhad, kami memohon kerjasama agar hanya tetamu yang tertera pada kad jemputan hadir. Terima kasih atas kefahaman dan kerjasama anda!
-              </p>
-            </div>
-
-            <!-- FAQ 2 -->
-            <div class="faq-item">
-              <h3 class="faq-question">Adakah tempat letak kenderaan disediakan di lokasi?</h3>
-              <p class="faq-answer">
-                Ya! Tempat letak kenderaan percuma disediakan di lokasi majlis, termasuk ruang khas untuk warga emas dan golongan OKU. Sila maklumkan kepada pihak kami sekiranya anda memerlukan bantuan khusus.
-              </p>
-            </div>
-
-            <!-- FAQ 3 -->
-            <div class="faq-item">
-              <h3 class="faq-question">Apakah tema pakaian yang digalakkan?</h3>
-              <p class="faq-answer">
-                Pakaian tradisional Melayu (Baju Melayu atau Baju Kurung) atau pakaian formal yang sopan dan selesa. Anda digalakkan mengenakan rona warna tanah (earth tones) atau warna pastel/neutral yang menenangkan.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ==================== SECTION 7: CONTACT & RSVP FOOTER ==================== -->
-    <section class="section section-contact" id="contact">
-      <div class="container contact-container">
-        <!-- Corner Monogram -->
-        <div class="contact-corner-monogram" aria-hidden="true">
-          <span class="c-mono-j">N</span>
-          <span class="c-mono-amp">&amp;</span>
-          <span class="c-mono-b">U</span>
-        </div>
-
-        <div class="contact-header">
-          <h2 class="contact-rsvp-reminder">
-            Sila sahkan kehadiran anda sebelum 15 Disember 2026.
-          </h2>
-          <p class="contact-prompt">
-            Sekiranya anda mempunyai sebarang pertanyaan, sila hubungi kami di:
-          </p>
-        </div>
-
-        <!-- 2 Contact Columns -->
-        <div class="contact-cards-grid">
-          <!-- Umar -->
-          <div class="contact-card">
-            <h3 class="contact-person-name">Umar</h3>
-            <ul class="contact-methods-list">
-              <li><a href="tel:+1234567890">+123 456 7890</a></li>
-              <li><a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></li>
-              <li><a href="#">@reallygreatsite</a></li>
-            </ul>
-          </div>
-
-          <!-- Nafisya -->
-          <div class="contact-card">
-            <h3 class="contact-person-name">Nafisya</h3>
-            <ul class="contact-methods-list">
-              <li><a href="tel:+1234567890">+123 456 7890</a></li>
-              <li><a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></li>
-              <li><a href="#">@reallygreatsite</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Decorative Floral Element -->
-        <div class="contact-botanical-wrap">
-          <img src="assets/media/foliage_branch.svg" alt="" class="contact-botanical" aria-hidden="true">
-        </div>
-
-        <!-- Wedding Hashtag -->
-        <div class="contact-hashtag-wrap">
-          <p class="contact-hashtag">#NafisyaUmar</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ==================== RSVP MODAL DIALOG ==================== -->
-  <dialog class="rsvp-modal" id="rsvpModal">
-    <div class="modal-dialog-content">
-      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Tutup">&times;</button>
-      
-      <div class="modal-header">
-        <h2 class="modal-title">Pengesahan Kehadiran (RSVP)</h2>
-        <p class="modal-subtitle">2 Januari 2027, Sabtu • Dewan Utama</p>
-      </div>
-
-      <form id="rsvpForm" class="rsvp-form">
-        <div class="form-group">
-          <label for="guestName">Nama Penuh *</label>
-          <input type="text" id="guestName" name="guestName" required placeholder="Nama penuh anda">
-        </div>
-
-        <div class="form-group">
-          <label for="guestEmail">Alamat Emel *</label>
-          <input type="email" id="guestEmail" name="guestEmail" required placeholder="emel@contoh.com">
-        </div>
-
-        <div class="form-group">
-          <label for="guestPhone">Nombor Telefon</label>
-          <input type="tel" id="guestPhone" name="guestPhone" placeholder="+60 12 345 6789">
-        </div>
-
-        <div class="form-group">
-          <label>Dapatkah anda hadir? *</label>
-          <div class="radio-options">
-            <label class="radio-label">
-              <input type="radio" name="attendance" value="yes" required checked>
-              <span>Ya, saya berbesar hati akan hadir!</span>
-            </label>
-            <label class="radio-label">
-              <input type="radio" name="attendance" value="no">
-              <span>Maaf, saya tidak dapat hadir</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group" id="guestCountGroup">
-          <label for="guestCount">Bilangan Tetamu yang Hadir</label>
-          <select id="guestCount" name="guestCount">
-            <option value="1">1 (Saya seorang)</option>
-            <option value="2">2 (Bersama pasangan / jemputan)</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="guestDiet">Keperluan Pemakanan / Alahan</label>
-          <input type="text" id="guestDiet" name="guestDiet" placeholder="Cth: Alahan makanan laut, Vegetarian, dll.">
-        </div>
-
-        <div class="form-group">
-          <label for="guestMessage">Ucapan &amp; Doa untuk Mempelai</label>
-          <textarea id="guestMessage" name="guestMessage" rows="3" placeholder="Titipkan ucapan tulus anda..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit-rsvp">Hantar Pengesahan</button>
-      </form>
-
-      <div class="rsvp-success-msg" id="rsvpSuccess" style="display: none;">
-        <h3>Terima Kasih!</h3>
-        <p>Pengesahan kehadiran anda telah selamat kami terima. Kami amat teruja untuk meraikan hari bahagia ini bersama anda!</p>
-        <button type="button" class="btn-rsvp close-success-btn" id="closeSuccessBtn">Tutup</button>
-      </div>
-    </div>
-  </dialog>
-
-  <script src="script.js"></script>
+      if (startPlayBtn) {
+        startPlayBtn.addEventListener('click', () => {
+          introVideo.play();
+          if (playFallback) playFallback.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
