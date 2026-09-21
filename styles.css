@@ -786,31 +786,37 @@ button {
   flex-direction: column;
 }
 
+.section-schedule .section-heading {
+  font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+  margin-bottom: 0.75rem;
+}
+
 .timeline-item {
-  padding: 0.9rem 0;
+  padding: 0.65rem 0;
 }
 
 .timeline-meta {
   font-family: var(--font-serif);
-  font-size: clamp(0.8rem, 1vw, 0.92rem);
+  font-size: clamp(0.72rem, 0.9vw, 0.82rem);
   color: var(--color-brown);
   font-weight: 600;
   display: block;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .timeline-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.18rem, 1.7vw, 1.55rem);
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
   font-weight: 700;
   color: var(--color-brown);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .timeline-desc {
   font-family: var(--font-serif);
-  font-size: clamp(0.88rem, 1.1vw, 1.02rem);
+  font-size: clamp(0.78rem, 0.95vw, 0.88rem);
   color: var(--color-dark);
+  line-height: 1.45;
 }
 
 .timeline-divider {
