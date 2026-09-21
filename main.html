@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Scheherazade+New:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1225">
+  <link rel="stylesheet" href="styles.css?v=20260921_1345">
   <style>
     @font-face {
       font-family: 'Amiri';
@@ -195,6 +195,33 @@
     .segment-btn.active span {
       color: #ffffff !important;
       font-weight: 700 !important;
+    }
+
+    .dress-icons-wrap {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: clamp(10px, 2.5vw, 24px) !important;
+      max-width: 100% !important;
+    }
+
+    .dress-icons-wrap .details-icon {
+      max-height: 90% !important;
+      width: auto !important;
+      object-fit: contain !important;
+      flex-shrink: 1 !important;
+    }
+
+    .dress-icons-wrap .attire-couple-img {
+      max-height: 96% !important;
+      width: auto !important;
+      object-fit: contain !important;
+      filter: drop-shadow(0 2px 8px rgba(111, 63, 1, 0.12));
+      transition: transform 0.3s ease;
+    }
+
+    .dress-icons-wrap .attire-couple-img:hover {
+      transform: scale(1.04);
     }
 
     .details-list {
@@ -596,6 +623,7 @@
             <div class="details-icon-wrap dress-icons-wrap">
               <img src="assets/media/barong_attire.svg" alt="Pakaian Pengantin Lelaki" class="details-icon icon-attire">
               <img src="assets/media/saya_dress.svg" alt="Pakaian Pengantin Perempuan" class="details-icon icon-attire">
+              <img src="assets/media/attire_couple.png" alt="Contoh Pakaian Tradisional Melayu" class="details-icon icon-attire attire-couple-img">
             </div>
             <h3 class="details-title">Tema Pakaian</h3>
             <ul class="details-list">

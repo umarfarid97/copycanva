@@ -3,5 +3,6 @@ node_modules/
 Thumbs.db
 *.log
 *.png
+!assets/**/*.png
 take_screenshot.js
 .temp_profile_*/
