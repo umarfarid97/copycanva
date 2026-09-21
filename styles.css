@@ -2,7 +2,7 @@
    Modern Filipiniana Wedding Website - Stylesheet
    Theme: Beige & Brown Modern Filipiniana Style
    Palette: Warm Cream (#f7e7cd), Soft White (#fff6e6), Terracotta (#bd8562),
-            Heritage Brown (#6f3f01), Off-Black (#1b1b1b)
+            Heritage Brown (#6f3f01)
    ========================================================================== */
 
 /* Embed Amiri Arabic Font directly */
@@ -30,8 +30,8 @@
   --color-terracotta: #bd8562;
   --color-terracotta-hover: #a56f4d;
   --color-brown: #6f3f01;
-  --color-dark: #1b1b1b;
-  --color-muted: #4a4a4a;
+  --color-dark: #6f3f01;
+  --color-muted: rgba(111, 63, 1, 0.75);
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-title: 'Italiana', 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
