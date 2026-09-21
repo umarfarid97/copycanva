@@ -172,8 +172,20 @@ document.addEventListener('DOMContentLoaded', () => {
   renderWishes();
 
   if (rsvpForm) {
+    let isSubmitting = false;
+
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      // Debounce & prevent rapid double-clicks
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Sedang menghantar...";
+      }
       
       const formData = new FormData(rsvpForm);
       const data = Object.fromEntries(formData.entries());
@@ -197,18 +209,20 @@ document.addEventListener('DOMContentLoaded', () => {
       saveWishes(currentWishes);
       renderWishes();
 
-      // Transition to success screen
-      rsvpForm.style.display = 'none';
-      if (rsvpSuccess) {
-        rsvpSuccess.innerHTML = `
-          <h3>Terima Kasih!</h3>
-          <p>Pengesahan kehadiran anda telah selamat kami terima. Kami amat berbesar hati untuk meraikan hari bahagia ini bersama anda!</p>
-          <div style="margin-top: 22px;">
-            <a href="#wishes" style="display: inline-block; padding: 10px 24px; border: 1px solid #bd8562; border-radius: 4px; color: #6f3f01; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; background: rgba(189, 133, 98, 0.1);">Lihat Ucapan Anda di Ucapan Terkini &darr;</a>
-          </div>
-        `;
-        rsvpSuccess.style.display = 'block';
-      }
+      // Transition to success screen after short delay
+      setTimeout(() => {
+        rsvpForm.style.display = 'none';
+        if (rsvpSuccess) {
+          rsvpSuccess.innerHTML = `
+            <h3>Terima Kasih!</h3>
+            <p>Pengesahan kehadiran anda telah selamat kami terima. Kami amat berbesar hati untuk meraikan hari bahagia ini bersama anda!</p>
+            <div style="margin-top: 22px;">
+              <a href="#wishes" style="display: inline-block; padding: 10px 24px; border: 1px solid #bd8562; border-radius: 4px; color: #6f3f01; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; background: rgba(189, 133, 98, 0.1);">Lihat Ucapan Anda di Ucapan Terkini &darr;</a>
+            </div>
+          `;
+          rsvpSuccess.style.display = 'block';
+        }
+      }, 600);
     });
   }
 
