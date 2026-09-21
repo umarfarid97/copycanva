@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JaVi & BeA — Modern Filipiniana Wedding</title>
+  <meta name="description" content="Isang pagdiriwang ng pag-ibig, paninindigan, at pamilyang pinagtagpo ng tadhana. Filipino Traditional Wedding in Beige Brown Modern Filipiniana Style.">
+
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Navigation Bar -->
+  <header class="site-header" id="navbar">
+    <nav class="nav-container">
+      <a href="#hero" class="nav-logo">JaVi <span>&</span> BeA</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Buksan ang menu">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#our-story" class="nav-link">Our Story</a></li>
+        <li><a href="#details" class="nav-link">Details</a></li>
+        <li><a href="#schedule" class="nav-link">Schedule</a></li>
+        <li><a href="#registry" class="nav-link">Registry</a></li>
+        <li><a href="#faqs" class="nav-link">FAQs</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><button class="nav-btn-rsvp open-rsvp-modal">RSVP</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== SECTION 0: HERO / HOME ==================== -->
+    <section class="section section-hero" id="hero">
+      <!-- Decorative Corner & Edge Vectors -->
+      <img src="assets/media/floral_corner_left.svg" alt="" class="hero-dec dec-top-left" aria-hidden="true">
+      <img src="assets/media/foliage_left.svg" alt="" class="hero-dec dec-mid-left" aria-hidden="true">
+      <img src="assets/media/floral_corner_right.svg" alt="" class="hero-dec dec-top-right" aria-hidden="true">
+      <img src="assets/media/floral_accent.svg" alt="" class="hero-dec dec-mid-right" aria-hidden="true">
+
+      <div class="hero-container">
+        <p class="hero-tagline">
+          Isang pagdiriwang ng pag-ibig, paninindigan, at pamilyang pinagtagpo ng tadhana.
+        </p>
+
+        <div class="hero-names-wrap">
+          <h1 class="hero-title">
+            <span class="name-part name-javi">JaVi</span>
+            <span class="ampersand">&amp;</span>
+            <span class="name-part name-bea">BeA</span>
+          </h1>
+        </div>
+
+        <p class="hero-datetime">
+          4:00 PM • Ika-9 ng Hunyo, 2030
+        </p>
+
+        <div class="hero-cta">
+          <button type="button" class="btn-rsvp open-rsvp-modal">RSVP</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 1: MONOGRAM & FEATURED PHOTO ==================== -->
+    <section class="section section-monogram" id="monogram">
+      <div class="monogram-bg-wrap">
+        <img src="assets/media/couple_monogram_bg.jpg" alt="JaVi at BeA" class="monogram-bg-img">
+        <div class="monogram-overlay"></div>
+      </div>
+      <div class="monogram-content">
+        <div class="monogram-letters">
+          <span class="mono-char mono-j">j</span>
+          <span class="mono-amp">&amp;</span>
+          <span class="mono-char mono-b">b</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: OUR STORY ("Ang Simula") ==================== -->
+    <section class="section section-story" id="our-story">
+      <div class="container story-grid">
+        <div class="story-image-col">
+          <div class="arch-frame">
+            <div class="arch-inner">
+              <img src="assets/media/couple_our_story.jpg" alt="JaVi at BeA larawan" class="story-img">
+            </div>
+          </div>
+        </div>
+
+        <div class="story-text-col">
+          <h2 class="section-heading text-left">Ang Simula</h2>
+          
+          <p class="story-intro">
+            Write a paragraph that tells your story as a couple. You can include details like how you met, your journey together, and what makes your relationship unique. This is your chance to share your personality and connect with your guests, giving them a glimpse into your love story and what this special day means to you.
+          </p>
+
+          <div class="story-block">
+            <h3 class="story-subheading">From Kabarkada to Bride &amp; Groom</h3>
+            <p class="story-body">
+              Add additional details here. You can talk about how you met, the proposal, or your journey together so far. Share any meaningful experiences, milestones, or funny moments that highlight your relationship.
+            </p>
+          </div>
+
+          <div class="story-block">
+            <h3 class="story-subheading">Ang Hinaharap</h3>
+            <p class="story-body">
+              You can also include what you envision for your future as a couple, your hopes, or what makes your bond unique. This is your chance to give guests a deeper glimpse into who you are as partners.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: DETAILS ("Reception Details") ==================== -->
+    <section class="section section-details" id="details">
+      <div class="container">
+        <h2 class="section-heading text-center">Reception Details</h2>
+
+        <div class="details-grid">
+          <!-- Card 1: Lugar ng Pagdarausan -->
+          <div class="details-card">
+            <div class="details-icon-wrap">
+              <img src="assets/media/church_venue.svg" alt="Lugar ng Pagdarausan" class="details-icon">
+            </div>
+            <h3 class="details-title">Lugar ng Pagdarausan</h3>
+            <p class="details-desc">
+              Our reception will take place in Bahay Playa. Expect good food, live acoustic music, and a few unexpected moments (alam niyo na kung sino iiyak sa speech!).
+            </p>
+          </div>
+
+          <!-- Card 2: Kasuotan -->
+          <div class="details-card">
+            <div class="details-icon-wrap dress-icons-wrap">
+              <img src="assets/media/barong_attire.svg" alt="Barong Tagalog" class="details-icon icon-attire">
+              <img src="assets/media/saya_dress.svg" alt="Baro't Saya" class="details-icon icon-attire">
+            </div>
+            <h3 class="details-title">Kasuotan</h3>
+            <p class="details-desc">
+              Filipiniana or formal wear (barong or saya) in earth tones or soft neutrals. Basta kumportable kayo — at handa sa sayawan!
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: SCHEDULE ("Programa") ==================== -->
+    <section class="section section-schedule" id="schedule">
+      <div class="container schedule-grid">
+        <div class="schedule-art-col">
+          <img src="assets/media/floral_vertical.svg" alt="" class="vertical-botanical" aria-hidden="true">
+        </div>
+
+        <div class="schedule-content-col">
+          <h2 class="section-heading text-left">Programa</h2>
+
+          <div class="timeline-list">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-item">
+              <span class="timeline-meta">Bahay Playa • Function Hall • 123 Anywhere St.</span>
+              <h3 class="timeline-title">Salubong &amp; Cocktail Hour</h3>
+              <p class="timeline-desc">Photo sessions and welcome drinks.</p>
+            </div>
+
+            <div class="timeline-divider"></div>
+
+            <!-- Timeline Item 2 -->
+            <div class="timeline-item">
+              <span class="timeline-meta">Bahay Playa • Function Hall • 123 Anywhere St.</span>
+              <h3 class="timeline-title">Dinner Reception</h3>
+              <p class="timeline-desc">Dinner program and toasts start at 6:00 PM.</p>
+            </div>
+
+            <div class="timeline-divider"></div>
+
+            <!-- Timeline Item 3 -->
+            <div class="timeline-item">
+              <span class="timeline-meta">Bahay Playa • Gardens • 123 Anywhere St.</span>
+              <h3 class="timeline-title">KTV, Inuman, at Sayawan</h3>
+              <p class="timeline-desc">Open dance floor and unli-KTV starts at 8:00 PM. Mag-practice na kayo!</p>
+            </div>
+            
+            <div class="timeline-divider"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: GIFT REGISTRY ==================== -->
+    <section class="section section-registry" id="registry">
+      <div class="container registry-grid">
+        <div class="registry-content-col">
+          <h2 class="section-heading text-left">Gift Registry</h2>
+          <h3 class="registry-subtitle">Ang tunay na yaman para sa amin ay ang inyong pagmamahal at suporta!</h3>
+          
+          <p class="registry-desc">
+            Pero kung talagang gusto n’yong magbigay (at paulit-ulit na nagtatanong ), naka-register kami sa Sining Spaces para sa ilang gamit na makakatulong sa pagsisimula ng aming bagong buhay bilang mag-asawa. Bukod doon, pwede rin simpleng ambag para sa aming mga plano — house fund, honeymoon, o kahit pang-stock lang ng pancit canton for future emergencies!
+          </p>
+
+          <!-- Contact & QR Badge -->
+          <div class="registry-card">
+            <div class="registry-qr-box">
+              <img src="assets/media/gift_box_qr.svg" alt="Sining Spaces QR Code" class="registry-qr-icon">
+            </div>
+            <div class="registry-card-info">
+              <p class="registry-info-label">Contact Sining Spaces for our updated gift list:</p>
+              <p class="registry-info-item"><strong>Mobile:</strong> <a href="tel:+1234567890">+123 456 7890</a></p>
+              <p class="registry-info-item"><strong>Email:</strong> <a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="registry-art-col">
+          <img src="assets/media/foliage_branch.svg" alt="" class="registry-botanical" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: FAQS ("Mga Katanungan") ==================== -->
+    <section class="section section-faqs" id="faqs">
+      <div class="container faqs-grid">
+        <div class="faqs-art-col">
+          <img src="assets/media/floral_vertical.svg" alt="" class="vertical-botanical" aria-hidden="true">
+        </div>
+
+        <div class="faqs-content-col">
+          <h2 class="section-heading text-left">Mga Katanungan</h2>
+
+          <div class="faqs-list">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+              <h3 class="faq-question">Pwede bang magdala ng kasama o mga bata?</h3>
+              <p class="faq-answer">
+                Dahil limitado ang upuan at gusto naming panatilihing intimate ang celebrasyon, inaanyayahan lang namin ang mga taong nakalista sa inyong imbitasyon. Salamat po sa pang-unawa!
+              </p>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+              <h3 class="faq-question">May parking ba sa venue?</h3>
+              <p class="faq-answer">
+                Yes! May libreng parking sa venue at may nakalaan ding slots para sa seniors at PWD guests. Kung kailangan ninyo ng tulong o assistance, sabihan lang kami nang maaga para maasikaso namin kayo.
+              </p>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+              <h3 class="faq-question">Ano ang dapat isuot?</h3>
+              <p class="faq-answer">
+                Filipiniana o pormal na kasuotan po ang hinihiling naming suotin. Maaaring magsuot ng barong, saya, o anumang pormal na kasuotan na may paggalang sa tradisyon. Piliin ang damit na magaan at kumportable — lalo na na outdoor ang venue.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 7: CONTACT & RSVP FOOTER ==================== -->
+    <section class="section section-contact" id="contact">
+      <div class="container contact-container">
+        <!-- Corner Monogram -->
+        <div class="contact-corner-monogram" aria-hidden="true">
+          <span class="c-mono-j">j</span>
+          <span class="c-mono-amp">&amp;</span>
+          <span class="c-mono-b">b</span>
+        </div>
+
+        <div class="contact-header">
+          <h2 class="contact-rsvp-reminder">
+            Huwag kalimutang mag-RSVP bago ang ika- 15 ng Marso 2030.
+          </h2>
+          <p class="contact-prompt">
+            Kung mayroon pa kayong ibang tanong, maaari niyo kaming i-contact sa:
+          </p>
+        </div>
+
+        <!-- 2 Contact Columns -->
+        <div class="contact-cards-grid">
+          <!-- Javi Mendoza -->
+          <div class="contact-card">
+            <h3 class="contact-person-name">Javi Mendoza</h3>
+            <ul class="contact-methods-list">
+              <li><a href="tel:+1234567890">+123 456 7890</a></li>
+              <li><a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></li>
+              <li><a href="#">@reallygreatsite</a></li>
+            </ul>
+          </div>
+
+          <!-- Bea Salazar -->
+          <div class="contact-card">
+            <h3 class="contact-person-name">Bea SalaZar</h3>
+            <ul class="contact-methods-list">
+              <li><a href="tel:+1234567890">+123 456 7890</a></li>
+              <li><a href="mailto:hello@reallygreatsite.com">hello@reallygreatsite.com</a></li>
+              <li><a href="#">@reallygreatsite</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Decorative Floral Element -->
+        <div class="contact-botanical-wrap">
+          <img src="assets/media/foliage_branch.svg" alt="" class="contact-botanical" aria-hidden="true">
+        </div>
+
+        <!-- Wedding Hashtag -->
+        <div class="contact-hashtag-wrap">
+          <p class="contact-hashtag">#JaviFoundBea</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RSVP MODAL DIALOG ==================== -->
+  <dialog class="rsvp-modal" id="rsvpModal">
+    <div class="modal-dialog-content">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Isara">&times;</button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title">RSVP</h2>
+        <p class="modal-subtitle">4:00 PM • Ika-9 ng Hunyo, 2030 • Bahay Playa</p>
+      </div>
+
+      <form id="rsvpForm" class="rsvp-form">
+        <div class="form-group">
+          <label for="guestName">Buong Pangalan (Full Name) *</label>
+          <input type="text" id="guestName" name="guestName" required placeholder="Juan Dela Cruz">
+        </div>
+
+        <div class="form-group">
+          <label for="guestEmail">Email Address *</label>
+          <input type="email" id="guestEmail" name="guestEmail" required placeholder="juan@halimbawa.com">
+        </div>
+
+        <div class="form-group">
+          <label for="guestPhone">Mobile Number</label>
+          <input type="tel" id="guestPhone" name="guestPhone" placeholder="+63 912 345 6789">
+        </div>
+
+        <div class="form-group">
+          <label>Makakadalo ka ba? (Will you attend?) *</label>
+          <div class="radio-options">
+            <label class="radio-label">
+              <input type="radio" name="attendance" value="yes" required checked>
+              <span>Oo, buong pusong dadalo! (Yes, attending)</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="attendance" value="no">
+              <span>Ikinalulungkot kong hindi makakadalo (Regretfully cannot attend)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" id="guestCountGroup">
+          <label for="guestCount">Bilang ng Dadalo (Number of Guests)</label>
+          <select id="guestCount" name="guestCount">
+            <option value="1">1 (Ako lang / Just me)</option>
+            <option value="2">2 (Kasama ang plus one sa imbitasyon)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="guestDiet">Dietary Requirements / Allergies</label>
+          <input type="text" id="guestDiet" name="guestDiet" placeholder="Hal. Seafood allergy, Vegetarian, atbp.">
+        </div>
+
+        <div class="form-group">
+          <label for="guestMessage">Mensahe para sa Bagong Kasal (Message for the Couple)</label>
+          <textarea id="guestMessage" name="guestMessage" rows="3" placeholder="Ibahagi ang inyong pagbati..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit-rsvp">Isumite ang RSVP</button>
+      </form>
+
+      <div class="rsvp-success-msg" id="rsvpSuccess" style="display: none;">
+        <h3>Maraming Salamat!</h3>
+        <p>Natanggap na namin ang inyong RSVP. Sabik kaming makasama kayo sa aming espesyal na araw!</p>
+        <button type="button" class="btn-rsvp close-success-btn" id="closeSuccessBtn">Isara</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
