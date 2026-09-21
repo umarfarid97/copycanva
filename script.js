@@ -201,6 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial render of wishes
   renderWishes();
 
+  const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyJJXD4MNCT_oQy1SYQe61i06Vl7jbuLIKjQUodlDYolQg1ATnAvdkd3GAL111_Yqxg/exec';
+
   if (rsvpForm) {
     let isSubmitting = false;
 
@@ -251,6 +253,37 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`[RSVP UPSERT] Created new record for phone ${normalizedPhone}:`, rsvpRecord);
       }
       saveRSVPs(storedRSVPs);
+
+      // --- Sync to Google Sheets via Web App Webhook ---
+      if (GOOGLE_SHEETS_ENDPOINT) {
+        const payload = {
+          guestName: guestName,
+          name: guestName,
+          guestPhone: rawPhone,
+          phone: rawPhone,
+          attendance: attendance,
+          status: attendance,
+          guestCount: guestCount,
+          pax: guestCount,
+          guestMessage: guestMessage,
+          message: guestMessage
+        };
+
+        fetch(GOOGLE_SHEETS_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(result => {
+          console.log('[Google Sheets] Synced successfully:', result);
+        })
+        .catch(err => {
+          console.warn('[Google Sheets] Sync note:', err);
+        });
+      }
 
       // Link wish with phone number so updates replace previous wish instead of duplicating
       const wishText = guestMessage || (attendance === 'Hadir'
