@@ -973,9 +973,10 @@ button {
 .wish-time {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  color: rgba(111, 63, 1, 0.55);
-  margin-top: 10px;
+  font-size: 0.78rem;
+  color: rgba(111, 63, 1, 0.6);
+  margin: 0;
+  white-space: nowrap;
 }
 
 /* ==========================================================================

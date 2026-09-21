@@ -63,33 +63,64 @@ document.addEventListener('DOMContentLoaded', () => {
   const defaultWishes = [
     {
       name: "Ahmad Zaki & Keluarga",
-      attendance: "Hadir",
       message: "Selamat Pengantin Baru Nafisya & Umar! Semoga ikatan perkahwinan ini berkekalan hingga ke anak cucu dan sentiasa diberkati Allah SWT. Barakallahu lakuma!",
       time: "2 jam yang lalu"
     },
     {
       name: "Siti Sarah & Suami",
-      attendance: "Hadir",
       message: "Tahniah Nafisya & Umar! Cantik sama padan, bagai pinang dibelah dua. Semoga rumah tangga yang dibina sentiasa dipenuhi sakinah, mawaddah wa rahmah.",
-      time: "Semalam"
+      time: "4 jam yang lalu"
     },
     {
       name: "Farhan & Rakan-rakan",
-      attendance: "Hadir",
-      message: "Tahniah sahabatku Umar & pasangan Nafisya! Semoga dipermudahkan segala urusan menuju hari bahagia. Tak sabar nak hadir meraikan korang nanti!",
-      time: "2 hari yang lalu"
+      message: "Tahniah sahabatku Umar & pasangan Nafisya! Semoga dipermudahkan segala urusan menuju hari bahagia. Tak sabar nak raikan korang nanti!",
+      time: "Semalam"
     },
     {
       name: "Nurul Izzah",
-      attendance: "Hadir",
-      message: "Barakallah! Semoga bahtera perkahwinan ini sentiasa dilimpahi rezeki yang melimpah ruah dan kebahagiaan yang berpanjangan.",
+      message: "Barakallah! Semoga bahtera perkahwinan ini sentiasa dilimpahi rezeki yang melimpah ruah dan kebahagiaan yang berpanjangan dunia akhirat.",
+      time: "Semalam"
+    },
+    {
+      name: "Pak Teh & Mak Teh",
+      message: "Selamat melangkah ke alam perkahwinan buat Nafisya & Umar. Semoga saling melengkapi dan berbahagia bersama hingga ke syurga.",
+      time: "2 hari yang lalu"
+    },
+    {
+      name: "Hafiz & Amira",
+      message: "Tahniah kedua mempelai! Semoga mahligai yang dibina sentiasa disinari kasih sayang, persefahaman, dan ketenangan jiwa.",
+      time: "2 hari yang lalu"
+    },
+    {
+      name: "Dr. Ridzwan & Dr. Farah",
+      message: "Selamat Pengantin Baru! Semoga ikatan suci ini menjadi jambatan kebaikan dan rahmat buat kedua-dua keluarga besar.",
       time: "3 hari yang lalu"
+    },
+    {
+      name: "Khairul Annuar",
+      message: "Tahniah Umar & Nafisya! Selamat menempuh fasa baru dalam kehidupan. Moga kekal bahagia hingga ke jannah, insya-Allah.",
+      time: "3 hari yang lalu"
+    },
+    {
+      name: "Ainul Mardhiah",
+      message: "Alhamdulillah, tahniah Nafisya si pengantin yang anggun & pasangan Umar! Semoga sentiasa dalam lindungan dan rahmat-Nya sentiasa.",
+      time: "4 hari yang lalu"
+    },
+    {
+      name: "Aiman Hakim & Batch 2019",
+      message: "Congrats bro Umar & Nafisya! Akhirnya selamat disatukan. Semoga rumahtangga sentiasa ceria, harmoni dan dilimpahi rezeki.",
+      time: "5 hari yang lalu"
+    },
+    {
+      name: "Hajah Rokiah",
+      message: "Syukur Alhamdulillah. Selamat menempuh alam rumahtangga buat cucunda Nafisya dan Umar. Semoga berkekalan hingga ke hujung nyawa.",
+      time: "6 hari yang lalu"
     }
   ];
 
   function getStoredWishes() {
     try {
-      const stored = localStorage.getItem('wedding_wishes_nafisya_umar');
+      const stored = localStorage.getItem('wedding_wishes_nafisya_umar_v2');
       if (stored) {
         return JSON.parse(stored);
       }
@@ -101,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function saveWishes(wishes) {
     try {
-      localStorage.setItem('wedding_wishes_nafisya_umar', JSON.stringify(wishes));
+      localStorage.setItem('wedding_wishes_nafisya_umar_v2', JSON.stringify(wishes));
     } catch (e) {
       console.warn('Could not save wishes to localStorage', e);
     }
@@ -129,10 +160,9 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="wish-card">
         <div class="wish-header">
           <h3 class="wish-sender">${escapeHtml(wish.name)}</h3>
-          <span class="wish-badge ${wish.attendance === 'Hadir' ? 'wish-attending' : 'wish-absent'}">${escapeHtml(wish.attendance || 'Hadir')}</span>
+          <span class="wish-time">${escapeHtml(wish.time || 'Baru sahaja')}</span>
         </div>
         <p class="wish-text">“${escapeHtml(wish.message)}”</p>
-        <span class="wish-time">${escapeHtml(wish.time || 'Baru sahaja')}</span>
       </div>
     `).join('');
   }
@@ -158,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const newWish = {
         name: guestName,
-        attendance: attendance,
         message: wishText,
         time: 'Baru sahaja'
       };
