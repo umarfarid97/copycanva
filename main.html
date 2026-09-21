@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1205">
+  <link rel="stylesheet" href="styles.css?v=20260921_1211">
   <style>
     .rsvp-form-card {
       background: transparent !important;
@@ -379,68 +379,52 @@
       text-decoration: underline !important;
     }
 
-    /* Kalam Suci Section */
-    .section-kalam {
-      background-color: #ede2d8 !important;
-      padding: clamp(60px, 8vw, 110px) 20px !important;
-      text-align: center !important;
+    /* Kalam Suci Section (Our Story) */
+    .section-story {
+      background-color: #fff6e6 !important;
     }
 
-    .kalam-container {
-      max-width: 780px !important;
-      margin: 0 auto !important;
+    .story-text-col {
       display: flex !important;
       flex-direction: column !important;
-      align-items: center !important;
-      text-align: center !important;
-    }
-
-    .kalam-script-title {
-      font-family: 'Pinyon Script', cursive !important;
-      font-size: clamp(3rem, 6.5vw, 4.8rem) !important;
-      font-weight: 400 !important;
-      color: #6f3f01 !important;
-      line-height: 1.1 !important;
-      margin-bottom: 0.6rem !important;
+      gap: 1.2rem !important;
     }
 
     .kalam-bismillah-sub {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-size: clamp(0.72rem, 1.1vw, 0.88rem) !important;
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(0.85rem, 1.2vw, 1.05rem) !important;
       font-weight: 600 !important;
-      letter-spacing: 0.18em !important;
+      letter-spacing: 0.16em !important;
       text-transform: uppercase !important;
       color: #6f3f01 !important;
       opacity: 0.85 !important;
-      margin-bottom: 1.8rem !important;
     }
 
     .kalam-bismillah-arabic {
       font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif !important;
-      font-size: clamp(2rem, 4.5vw, 3rem) !important;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem) !important;
       font-weight: 700 !important;
       color: #2b2520 !important;
       line-height: 1.6 !important;
-      margin-bottom: 1.2rem !important;
       direction: rtl !important;
     }
 
     .kalam-divider {
-      width: 90px !important;
+      width: 80px !important;
       height: 1.5px !important;
       background-color: #bd8562 !important;
-      margin: 0 auto 1.8rem !important;
+      margin: 0.2rem 0 0.8rem 0 !important;
       opacity: 0.7 !important;
     }
 
     .kalam-arabic-verse {
-      margin-bottom: 1.8rem !important;
+      margin-bottom: 0.5rem !important;
       direction: rtl !important;
     }
 
     .kalam-arabic-verse .arabic-line {
       font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif !important;
-      font-size: clamp(1.4rem, 2.8vw, 2.1rem) !important;
+      font-size: clamp(1.3rem, 2.4vw, 1.85rem) !important;
       line-height: 2.2 !important;
       color: #2b2520 !important;
       margin-bottom: 0.4rem !important;
@@ -450,10 +434,14 @@
       font-family: 'Cormorant Garamond', Georgia, serif !important;
       font-size: clamp(1.1rem, 1.6vw, 1.35rem) !important;
       font-style: italic !important;
-      color: #6f3f01 !important;
-      line-height: 1.75 !important;
-      max-width: 680px !important;
-      margin: 0 auto !important;
+      color: #1b1b1b !important;
+      line-height: 1.7 !important;
+    }
+
+    @media (max-width: 992px) {
+      .story-text-col .kalam-divider {
+        margin: 0.2rem auto 0.8rem auto !important;
+      }
     }
   </style>
 </head>
@@ -527,25 +515,36 @@
     </section>
 
     <!-- ==================== SECTION 2: KALAM SUCI ==================== -->
-    <section class="section section-story section-kalam" id="our-story">
-      <div class="container kalam-container">
-        <h2 class="kalam-script-title">‘Kalam Suci’</h2>
-        <p class="kalam-bismillah-sub">DENGAN NAMA ALLAH YANG MAHA PENGASIH LAGI MAHA PENYAYANG</p>
-        
-        <div class="kalam-bismillah-arabic" dir="rtl" lang="ar">
-          بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    <section class="section section-story" id="our-story">
+      <div class="container story-grid">
+        <div class="story-image-col">
+          <div class="arch-frame">
+            <div class="arch-inner">
+              <img src="assets/media/couple_our_story.jpg" alt="Foto Kenangan Nafisya &amp; Umar" class="story-img">
+            </div>
+          </div>
         </div>
 
-        <div class="kalam-divider"></div>
+        <div class="story-text-col">
+          <h2 class="section-heading text-left">Kalam Suci</h2>
+          
+          <p class="kalam-bismillah-sub">DENGAN NAMA ALLAH YANG MAHA PENGASIH LAGI MAHA PENYAYANG</p>
+          
+          <div class="kalam-bismillah-arabic" dir="rtl" lang="ar">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+          </div>
 
-        <div class="kalam-arabic-verse" dir="rtl" lang="ar">
-          <p class="arabic-line">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
-          <p class="arabic-line">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+          <div class="kalam-divider"></div>
+
+          <div class="kalam-arabic-verse" dir="rtl" lang="ar">
+            <p class="arabic-line">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
+            <p class="arabic-line">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+          </div>
+
+          <p class="kalam-translation">
+            "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+          </p>
         </div>
-
-        <p class="kalam-translation">
-          "Dan di antara tanda-tanda kebesaran-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
-        </p>
       </div>
     </section>
 
