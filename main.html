@@ -12,9 +12,9 @@
   <!-- Google Fonts Preconnect & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Scheherazade+New:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1215">
+  <link rel="stylesheet" href="styles.css?v=20260921_1219">
   <style>
     .rsvp-form-card {
       background: transparent !important;
@@ -405,13 +405,15 @@
     }
 
     .kalam-bismillah-arabic {
-      font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif !important;
+      font-family: 'Amiri', 'Noto Naskh Arabic', 'Scheherazade New', 'Traditional Arabic', serif !important;
       font-size: clamp(1.8rem, 3.5vw, 2.6rem) !important;
       font-weight: 700 !important;
       color: #2b2520 !important;
       line-height: 1.6 !important;
       margin-bottom: 0.8rem !important;
       direction: rtl !important;
+      text-align: center !important;
+      width: 100% !important;
     }
 
     .kalam-divider {
@@ -425,14 +427,23 @@
     .kalam-arabic-verse {
       margin-bottom: 1.2rem !important;
       direction: rtl !important;
+      text-align: center !important;
+      width: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
     }
 
     .kalam-arabic-verse .arabic-line {
-      font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade New', serif !important;
-      font-size: clamp(1.3rem, 2.4vw, 1.85rem) !important;
+      font-family: 'Amiri', 'Noto Naskh Arabic', 'Scheherazade New', 'Traditional Arabic', serif !important;
+      font-size: clamp(1.25rem, 2.5vw, 1.85rem) !important;
+      font-weight: 400 !important;
       line-height: 2.2 !important;
       color: #2b2520 !important;
       margin-bottom: 0.4rem !important;
+      text-align: center !important;
+      width: 100% !important;
+      display: block !important;
     }
 
     .kalam-translation {
@@ -522,15 +533,15 @@
         
         <p class="kalam-bismillah-sub">DENGAN NAMA ALLAH YANG MAHA PENGASIH LAGI MAHA PENYAYANG</p>
         
-        <div class="kalam-bismillah-arabic" dir="rtl" lang="ar">
+        <div class="kalam-bismillah-arabic" dir="rtl" lang="ar" style="text-align: center;">
           بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
         </div>
 
         <div class="kalam-divider"></div>
 
-        <div class="kalam-arabic-verse" dir="rtl" lang="ar">
-          <p class="arabic-line">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
-          <p class="arabic-line">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+        <div class="kalam-arabic-verse" dir="rtl" lang="ar" style="text-align: center;">
+          <p class="arabic-line" style="text-align: center;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
+          <p class="arabic-line" style="text-align: center;">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
         </div>
 
         <p class="kalam-translation">
