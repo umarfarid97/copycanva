@@ -565,6 +565,49 @@ button {
   line-height: 1.55;
 }
 
+.map-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.25rem;
+}
+
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff6e6;
+  background-color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta);
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(111, 63, 1, 0.15);
+  transition: var(--transition-smooth);
+}
+
+.btn-map:hover {
+  background-color: var(--color-terracotta-hover);
+  border-color: var(--color-terracotta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(111, 63, 1, 0.25);
+  color: #ffffff;
+}
+
+.btn-map svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    Section 4: Schedule ("Programa")
    ========================================================================== */
