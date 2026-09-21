@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Scheherazade+New:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260922_0055">
+  <link rel="stylesheet" href="styles.css?v=20260922_0058">
   <style>
     @font-face {
       font-family: 'Amiri';
@@ -694,9 +694,9 @@
       }
     }
 
-    /* Wedding Countdown Timer ("Menghitung Hari") */
+    /* Wedding Countdown Timer ("Countdown") - Direct on Background */
     .monogram-countdown {
-      margin-top: clamp(1rem, 2.5vw, 2.2rem) !important;
+      margin-top: clamp(1.2rem, 3vw, 2.8rem) !important;
       display: flex !important;
       flex-direction: column !important;
       align-items: center !important;
@@ -706,13 +706,13 @@
 
     .countdown-title {
       font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: clamp(0.78rem, 1.15vw, 0.95rem) !important;
+      font-size: clamp(0.85rem, 1.3vw, 1.1rem) !important;
       font-weight: 600 !important;
-      letter-spacing: 0.22em !important;
+      letter-spacing: 0.26em !important;
       text-transform: uppercase !important;
       color: #fff6e6 !important;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55) !important;
-      margin-bottom: 0.65rem !important;
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+      margin-bottom: 0.75rem !important;
       opacity: 0.95 !important;
     }
 
@@ -720,14 +720,14 @@
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      gap: clamp(6px, 1.6vw, 14px) !important;
-      background: rgba(43, 37, 32, 0.42) !important;
-      backdrop-filter: blur(8px) !important;
-      -webkit-backdrop-filter: blur(8px) !important;
-      border: 1px solid rgba(255, 246, 230, 0.32) !important;
-      border-radius: 12px !important;
-      padding: clamp(8px, 1.8vw, 14px) clamp(12px, 2.8vw, 24px) !important;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28) !important;
+      gap: clamp(8px, 2.2vw, 22px) !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
     }
 
     .countdown-box {
@@ -735,36 +735,38 @@
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
-      min-width: clamp(46px, 11vw, 68px) !important;
+      min-width: clamp(52px, 12vw, 85px) !important;
     }
 
     .countdown-num {
       font-family: 'Italiana', serif !important;
-      font-size: clamp(1.4rem, 3.2vw, 2.25rem) !important;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem) !important;
       font-weight: 700 !important;
       color: #fff6e6 !important;
-      line-height: 1 !important;
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important;
+      line-height: 0.95 !important;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.9) !important;
     }
 
     .countdown-unit {
       font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: clamp(0.62rem, 0.8vw, 0.76rem) !important;
-      letter-spacing: 0.12em !important;
+      font-size: clamp(0.72rem, 1.1vw, 0.92rem) !important;
+      letter-spacing: 0.16em !important;
       text-transform: uppercase !important;
       color: #fff6e6 !important;
-      opacity: 0.85 !important;
-      margin-top: 4px !important;
+      opacity: 0.92 !important;
+      margin-top: 6px !important;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75) !important;
     }
 
     .countdown-colon {
       font-family: 'Italiana', serif !important;
-      font-size: clamp(1.1rem, 2.2vw, 1.6rem) !important;
+      font-size: clamp(1.8rem, 4vw, 3rem) !important;
       font-weight: 600 !important;
-      color: rgba(255, 246, 230, 0.65) !important;
-      line-height: 1 !important;
-      margin-top: -10px !important;
+      color: rgba(255, 246, 230, 0.8) !important;
+      line-height: 0.95 !important;
+      margin-top: -14px !important;
       user-select: none !important;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.85) !important;
     }
   </style>
 </head>
@@ -827,9 +829,9 @@
           <span class="mono-char mono-b">U</span>
         </div>
 
-        <!-- Wedding Countdown Timer ("Menghitung Hari") -->
+        <!-- Wedding Countdown Timer ("Countdown") -->
         <div class="monogram-countdown" id="weddingCountdown">
-          <p class="countdown-title">Menghitung Hari</p>
+          <p class="countdown-title">Countdown</p>
           <div class="countdown-timer">
             <div class="countdown-box">
               <span class="countdown-num" id="cdDays">--</span>
@@ -1121,6 +1123,6 @@
     </section>
   </main>
 
-  <script src="script.js?v=20260922_0055"></script>
+  <script src="script.js?v=20260922_0058"></script>
 </body>
 </html>
