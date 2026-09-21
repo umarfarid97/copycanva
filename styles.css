@@ -1312,22 +1312,51 @@ button {
 }
 
 .radio-label input[type="radio"] {
-  appearance: auto;
-  -webkit-appearance: radio;
+  appearance: none;
+  -webkit-appearance: none;
   width: 20px;
   height: 20px;
   min-width: 20px;
   min-height: 20px;
   margin: 0;
   padding: 0;
-  border: none;
+  border: 2px solid var(--color-terracotta);
   border-radius: 50%;
-  background: transparent;
-  accent-color: var(--color-terracotta);
+  background-color: transparent;
   cursor: pointer;
-  touch-action: manipulation;
-  transition: none;
+  display: inline-grid;
+  place-content: center;
   flex-shrink: 0;
+  touch-action: manipulation;
+  transition: border-color 0.2s ease;
+}
+
+.radio-label input[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.15s ease-in-out;
+  background-color: var(--color-terracotta);
+}
+
+.radio-label input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+.radio-label input[type="radio"]:hover {
+  border-color: var(--color-brown);
+}
+
+.radio-label input[type="radio"]:focus-visible {
+  outline: 2px solid var(--color-brown);
+  outline-offset: 2px;
+}
+
+.radio-label:has(input[type="radio"]:checked) {
+  color: var(--color-brown);
+  font-weight: 600;
 }
 
 /* Segmented Control (Checker Box [1|2|3|4]) for Pax Selection */
