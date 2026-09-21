@@ -189,11 +189,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fetchWishesFromSheet();
 
+  // --- Phone Number Validation ---
+  function validatePhoneNumber(phone) {
+    if (!phone || !phone.trim()) {
+      return { valid: false, message: 'Sila masukkan nombor telefon anda.' };
+    }
+    const trimmed = phone.trim();
+    if (/[a-zA-Z]/.test(trimmed)) {
+      return { valid: false, message: 'Nombor telefon tidak boleh mengandungi huruf. Sila masukkan angka sahaja.' };
+    }
+    if (/[^\d+\s-]/.test(trimmed)) {
+      return { valid: false, message: 'Nombor telefon mengandungi simbol tidak sah. Sila masukkan angka sahaja.' };
+    }
+    const digits = trimmed.replace(/\D/g, '');
+    if (digits.length < 9) {
+      return { valid: false, message: 'Nombor telefon tidak lengkap (minimum 9 digit angka).' };
+    }
+    if (digits.length > 15) {
+      return { valid: false, message: 'Nombor telefon terlalu panjang (maksimum 15 digit angka).' };
+    }
+    return { valid: true, digits: digits };
+  }
+
+  const guestPhoneInput = document.getElementById('guestPhone');
+  const phoneError = document.getElementById('phoneError');
+
+  if (guestPhoneInput) {
+    // Real-time input filter: prevent typing letters and invalid characters
+    guestPhoneInput.addEventListener('input', (e) => {
+      let val = e.target.value;
+      let filtered = val.replace(/[^0-9+\s-]/g, '');
+      if (filtered.includes('+')) {
+        const startsWithPlus = filtered.startsWith('+');
+        filtered = (startsWithPlus ? '+' : '') + filtered.replace(/\+/g, '');
+      }
+      if (val !== filtered) {
+        e.target.value = filtered;
+      }
+
+      if (phoneError) {
+        phoneError.style.display = 'none';
+        phoneError.textContent = '';
+      }
+      guestPhoneInput.classList.remove('input-error');
+    });
+  }
+
   if (rsvpForm) {
     let isSubmitting = false;
 
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
+
+      const formData = new FormData(rsvpForm);
+      const data = Object.fromEntries(formData.entries());
+      console.log('RSVP Submission received:', data);
+
+      const guestName = (data.guestName || '').trim() || 'Tetamu';
+      const rawPhone = (data.guestPhone || '').trim();
+
+      // Validate phone number: no letters, minimum 9 digits
+      const phoneCheck = validatePhoneNumber(rawPhone);
+      if (!phoneCheck.valid) {
+        if (guestPhoneInput) {
+          guestPhoneInput.classList.add('input-error');
+          guestPhoneInput.focus();
+        }
+        if (phoneError) {
+          phoneError.textContent = phoneCheck.message;
+          phoneError.style.display = 'block';
+        }
+        return;
+      }
 
       // Debounce & prevent rapid double-clicks
       if (isSubmitting) return;
@@ -204,13 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
         submitBtn.innerText = "Sedang menghantar...";
       }
-      
-      const formData = new FormData(rsvpForm);
-      const data = Object.fromEntries(formData.entries());
-      console.log('RSVP Submission received:', data);
 
-      const guestName = (data.guestName || '').trim() || 'Tetamu';
-      const rawPhone = (data.guestPhone || '').trim();
       const normalizedPhone = normalizePhone(rawPhone);
       const attendance = data.attendance || 'Hadir';
       const guestMessage = (data.guestMessage || '').trim();

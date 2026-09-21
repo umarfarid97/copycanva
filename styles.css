@@ -1292,6 +1292,21 @@ button {
   box-shadow: 0 0 0 2px rgba(189, 133, 98, 0.15);
 }
 
+.form-group input.input-error {
+  border-color: #b3261e !important;
+  box-shadow: 0 0 0 2px rgba(179, 38, 30, 0.18) !important;
+}
+
+.form-error-msg {
+  color: #b3261e;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-top: 2px;
+  display: none;
+}
+
 .radio-options {
   display: flex;
   flex-direction: column;

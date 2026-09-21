@@ -819,7 +819,8 @@
               <!-- No Telefon : (Mandatory) -->
               <div class="form-group">
                 <label for="guestPhone">No Telefon *</label>
-                <input type="tel" id="guestPhone" name="guestPhone" required placeholder="Cth: 012-3456789">
+                <input type="tel" id="guestPhone" name="guestPhone" required placeholder="Cth: 012-3456789" inputmode="numeric" pattern="[0-9+\s-]{9,16}" title="Sila masukkan nombor telefon yang sah (minimum 9 digit angka, tiada huruf)">
+                <div class="form-error-msg" id="phoneError"></div>
               </div>
 
               <!-- Attend;Absent : (Mandatory: in radio button format) -->
@@ -959,6 +960,6 @@
     </section>
   </main>
 
-  <script src="script.js?v=20260921_1710"></script>
+  <script src="script.js?v=20260921_1715"></script>
 </body>
 </html>
