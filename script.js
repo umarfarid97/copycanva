@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getStoredWishes() {
     try {
-      const stored = localStorage.getItem('wedding_wishes_nafisya_umar_v2');
+      const stored = localStorage.getItem('wedding_wishes_nafisya_umar_v3');
       if (stored) {
         return JSON.parse(stored);
       }
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function saveWishes(wishes) {
     try {
-      localStorage.setItem('wedding_wishes_nafisya_umar_v2', JSON.stringify(wishes));
+      localStorage.setItem('wedding_wishes_nafisya_umar_v3', JSON.stringify(wishes));
     } catch (e) {
       console.warn('Could not save wishes to localStorage', e);
     }
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3 class="wish-sender">${escapeHtml(wish.name)}</h3>
           <span class="wish-time">${escapeHtml(wish.time || 'Baru sahaja')}</span>
         </div>
-        <p class="wish-text">“${escapeHtml(wish.message)}”</p>
+        <p class="wish-text">${escapeHtml(wish.message)}</p>
       </div>
     `).join('');
   }
