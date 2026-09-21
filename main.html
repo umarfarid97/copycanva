@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1135">
+  <link rel="stylesheet" href="styles.css?v=20260921_1140">
   <style>
     .rsvp-form-card {
       background: transparent !important;
@@ -265,6 +265,115 @@
       margin-right: 4px !important;
       vertical-align: middle !important;
     }
+
+    /* Ucapan Terkini Styles */
+    .wishes-heading-wrap {
+      margin-bottom: 1.5rem;
+    }
+
+    .wishes-subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.1rem, 1.5vw, 1.3rem) !important;
+      color: #6f3f01 !important;
+      font-style: italic !important;
+      margin-top: 0.35rem;
+      opacity: 0.85;
+    }
+
+    .wishes-scroll-container {
+      max-height: 480px;
+      overflow-y: auto;
+      padding-right: 10px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(189, 133, 98, 0.4) transparent;
+    }
+
+    .wishes-scroll-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .wishes-scroll-container::-webkit-scrollbar-thumb {
+      background: rgba(189, 133, 98, 0.35);
+      border-radius: 4px;
+    }
+
+    .wishes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .wish-card {
+      background: rgba(255, 255, 255, 0.45) !important;
+      border: 1px solid rgba(189, 133, 98, 0.35) !important;
+      border-radius: 8px !important;
+      padding: 18px 22px !important;
+      box-shadow: 0 4px 15px rgba(111, 63, 1, 0.04) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .wish-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(111, 63, 1, 0.08) !important;
+    }
+
+    .wish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .wish-sender {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.2rem, 1.8vw, 1.45rem) !important;
+      font-weight: 700 !important;
+      color: #6f3f01 !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+    }
+
+    .wish-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 0.72rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.06em !important;
+      text-transform: uppercase !important;
+      padding: 3px 10px !important;
+      border-radius: 20px !important;
+      white-space: nowrap !important;
+    }
+
+    .wish-badge.wish-attending {
+      background-color: rgba(189, 133, 98, 0.18) !important;
+      color: #6f3f01 !important;
+      border: 1px solid rgba(189, 133, 98, 0.4) !important;
+    }
+
+    .wish-badge.wish-absent {
+      background-color: rgba(120, 120, 120, 0.12) !important;
+      color: #666666 !important;
+      border: 1px solid rgba(120, 120, 120, 0.25) !important;
+    }
+
+    .wish-text {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem) !important;
+      color: #1b1b1b !important;
+      line-height: 1.6 !important;
+      font-style: italic !important;
+      margin: 0 !important;
+    }
+
+    .wish-time {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 0.72rem !important;
+      color: rgba(111, 63, 1, 0.55) !important;
+      margin-top: 10px !important;
+    }
   </style>
 </head>
 <body>
@@ -282,7 +391,7 @@
         <li><a href="#details" class="nav-link">Butiran</a></li>
         <li><a href="#schedule" class="nav-link">Atur Cara</a></li>
         <li><a href="#rsvp" class="nav-link">RSVP</a></li>
-        <li><a href="#faqs" class="nav-link">Soalan Lazim</a></li>
+        <li><a href="#wishes" class="nav-link">Ucapan Terkini</a></li>
         <li><a href="#contact" class="nav-link">Hubungi</a></li>
         <li><a href="#rsvp" class="nav-btn-rsvp">RSVP</a></li>
       </ul>
@@ -539,39 +648,57 @@
       </div>
     </section>
 
-    <!-- ==================== SECTION 6: FAQS ("Soalan Lazim") ==================== -->
-    <section class="section section-faqs" id="faqs">
-      <div class="container faqs-grid">
+    <!-- ==================== SECTION 6: UCAPAN TERKINI ==================== -->
+    <section class="section section-faqs section-wishes" id="wishes">
+      <div class="container faqs-grid wishes-grid">
         <div class="faqs-art-col">
           <img src="assets/media/floral_vertical.svg" alt="" class="vertical-botanical" aria-hidden="true">
         </div>
 
-        <div class="faqs-content-col">
-          <h2 class="section-heading text-left">Soalan Lazim</h2>
+        <div class="faqs-content-col wishes-content-col">
+          <div class="wishes-heading-wrap">
+            <h2 class="section-heading text-left">Ucapan Terkini</h2>
+            <p class="wishes-subtitle">Titipan doa &amp; ucapan manis daripada para tetamu untuk Nafisya &amp; Umar</p>
+          </div>
 
-          <div class="faqs-list">
-            <!-- FAQ 1 -->
-            <div class="faq-item">
-              <h3 class="faq-question">Bolehkah saya membawa tetamu tambahan atau kanak-kanak?</h3>
-              <p class="faq-answer">
-                Bagi memastikan keselesaan semua tetamu dan kerana kapasiti tempat duduk yang terhad, kami memohon kerjasama agar hanya tetamu yang tertera pada kad jemputan hadir. Terima kasih atas kefahaman dan kerjasama anda!
-              </p>
-            </div>
+          <div class="wishes-scroll-container">
+            <div class="wishes-list" id="wishesList">
+              <!-- Default dummy wishes (dynamically managed by script.js) -->
+              <div class="wish-card">
+                <div class="wish-header">
+                  <h3 class="wish-sender">Ahmad Zaki &amp; Keluarga</h3>
+                  <span class="wish-badge wish-attending">Hadir</span>
+                </div>
+                <p class="wish-text">“Selamat Pengantin Baru Nafisya &amp; Umar! Semoga ikatan perkahwinan ini berkekalan hingga ke anak cucu dan sentiasa diberkati Allah SWT. Barakallahu lakuma!”</p>
+                <span class="wish-time">2 jam yang lalu</span>
+              </div>
 
-            <!-- FAQ 2 -->
-            <div class="faq-item">
-              <h3 class="faq-question">Adakah tempat letak kenderaan disediakan di lokasi?</h3>
-              <p class="faq-answer">
-                Ya! Tempat letak kenderaan percuma disediakan di lokasi majlis, termasuk ruang khas untuk warga emas dan golongan OKU. Sila maklumkan kepada pihak kami sekiranya anda memerlukan bantuan khusus.
-              </p>
-            </div>
+              <div class="wish-card">
+                <div class="wish-header">
+                  <h3 class="wish-sender">Siti Sarah &amp; Suami</h3>
+                  <span class="wish-badge wish-attending">Hadir</span>
+                </div>
+                <p class="wish-text">“Tahniah Nafisya &amp; Umar! Cantik sama padan, bagai pinang dibelah dua. Semoga rumah tangga yang dibina sentiasa dipenuhi sakinah, mawaddah wa rahmah.”</p>
+                <span class="wish-time">Semalam</span>
+              </div>
 
-            <!-- FAQ 3 -->
-            <div class="faq-item">
-              <h3 class="faq-question">Apakah tema pakaian yang digalakkan?</h3>
-              <p class="faq-answer">
-                Pakaian tradisional Melayu (Baju Melayu atau Baju Kurung) atau pakaian formal yang sopan dan selesa. Anda digalakkan mengenakan rona warna tanah (earth tones) atau warna pastel/neutral yang menenangkan.
-              </p>
+              <div class="wish-card">
+                <div class="wish-header">
+                  <h3 class="wish-sender">Farhan &amp; Rakan-rakan</h3>
+                  <span class="wish-badge wish-attending">Hadir</span>
+                </div>
+                <p class="wish-text">“Tahniah sahabatku Umar &amp; pasangan Nafisya! Semoga dipermudahkan segala urusan menuju hari bahagia. Tak sabar nak hadir meraikan korang nanti!”</p>
+                <span class="wish-time">2 hari yang lalu</span>
+              </div>
+
+              <div class="wish-card">
+                <div class="wish-header">
+                  <h3 class="wish-sender">Nurul Izzah</h3>
+                  <span class="wish-badge wish-attending">Hadir</span>
+                </div>
+                <p class="wish-text">“Barakallah! Semoga bahtera perkahwinan ini sentiasa dilimpahi rezeki yang melimpah ruah dan kebahagiaan yang berpanjangan.”</p>
+                <span class="wish-time">3 hari yang lalu</span>
+              </div>
             </div>
           </div>
         </div>
@@ -633,6 +760,6 @@
     </section>
   </main>
 
-  <script src="script.js?v=20260921_1122"></script>
+  <script src="script.js?v=20260921_1140"></script>
 </body>
 </html>

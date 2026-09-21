@@ -865,6 +865,119 @@ button {
   line-height: 1.6;
 }
 
+/* Wishes / Ucapan Terkini */
+.wishes-heading-wrap {
+  margin-bottom: 1.5rem;
+}
+
+.wishes-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  color: var(--color-brown);
+  font-style: italic;
+  margin-top: 0.35rem;
+  opacity: 0.85;
+}
+
+.wishes-scroll-container {
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 10px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(189, 133, 98, 0.4) transparent;
+}
+
+.wishes-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wishes-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.wishes-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(189, 133, 98, 0.35);
+  border-radius: 4px;
+}
+
+.wishes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.wish-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(189, 133, 98, 0.3);
+  border-radius: 8px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 15px rgba(111, 63, 1, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wish-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(111, 63, 1, 0.08);
+}
+
+.wish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.wish-sender {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: var(--color-brown);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.wish-badge {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.wish-badge.wish-attending {
+  background-color: rgba(189, 133, 98, 0.18);
+  color: #6f3f01;
+  border: 1px solid rgba(189, 133, 98, 0.4);
+}
+
+.wish-badge.wish-absent {
+  background-color: rgba(120, 120, 120, 0.12);
+  color: #666666;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+}
+
+.wish-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  color: var(--color-dark);
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+}
+
+.wish-time {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  color: rgba(111, 63, 1, 0.55);
+  margin-top: 10px;
+}
+
 /* ==========================================================================
    Section 7: Contact & RSVP Footer
    ========================================================================== */

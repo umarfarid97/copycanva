@@ -60,6 +60,86 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 3. Inline RSVP Form Handling ---
+  const defaultWishes = [
+    {
+      name: "Ahmad Zaki & Keluarga",
+      attendance: "Hadir",
+      message: "Selamat Pengantin Baru Nafisya & Umar! Semoga ikatan perkahwinan ini berkekalan hingga ke anak cucu dan sentiasa diberkati Allah SWT. Barakallahu lakuma!",
+      time: "2 jam yang lalu"
+    },
+    {
+      name: "Siti Sarah & Suami",
+      attendance: "Hadir",
+      message: "Tahniah Nafisya & Umar! Cantik sama padan, bagai pinang dibelah dua. Semoga rumah tangga yang dibina sentiasa dipenuhi sakinah, mawaddah wa rahmah.",
+      time: "Semalam"
+    },
+    {
+      name: "Farhan & Rakan-rakan",
+      attendance: "Hadir",
+      message: "Tahniah sahabatku Umar & pasangan Nafisya! Semoga dipermudahkan segala urusan menuju hari bahagia. Tak sabar nak hadir meraikan korang nanti!",
+      time: "2 hari yang lalu"
+    },
+    {
+      name: "Nurul Izzah",
+      attendance: "Hadir",
+      message: "Barakallah! Semoga bahtera perkahwinan ini sentiasa dilimpahi rezeki yang melimpah ruah dan kebahagiaan yang berpanjangan.",
+      time: "3 hari yang lalu"
+    }
+  ];
+
+  function getStoredWishes() {
+    try {
+      const stored = localStorage.getItem('wedding_wishes_nafisya_umar');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (e) {
+      console.warn('Could not read wishes from localStorage', e);
+    }
+    return defaultWishes;
+  }
+
+  function saveWishes(wishes) {
+    try {
+      localStorage.setItem('wedding_wishes_nafisya_umar', JSON.stringify(wishes));
+    } catch (e) {
+      console.warn('Could not save wishes to localStorage', e);
+    }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str).replace(/[&<>"']/g, function(m) {
+      return {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[m];
+    });
+  }
+
+  function renderWishes() {
+    const wishesList = document.getElementById('wishesList');
+    if (!wishesList) return;
+
+    const wishes = getStoredWishes();
+    wishesList.innerHTML = wishes.map(wish => `
+      <div class="wish-card">
+        <div class="wish-header">
+          <h3 class="wish-sender">${escapeHtml(wish.name)}</h3>
+          <span class="wish-badge ${wish.attendance === 'Hadir' ? 'wish-attending' : 'wish-absent'}">${escapeHtml(wish.attendance || 'Hadir')}</span>
+        </div>
+        <p class="wish-text">“${escapeHtml(wish.message)}”</p>
+        <span class="wish-time">${escapeHtml(wish.time || 'Baru sahaja')}</span>
+      </div>
+    `).join('');
+  }
+
+  // Initial render of wishes
+  renderWishes();
+
   if (rsvpForm) {
     rsvpForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -68,9 +148,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = Object.fromEntries(formData.entries());
       console.log('RSVP Submission received:', data);
 
+      const guestName = (data.guestName || '').trim() || 'Tetamu';
+      const attendance = data.attendance || 'Hadir';
+      const guestMessage = (data.guestMessage || '').trim();
+
+      const wishText = guestMessage || (attendance === 'Hadir'
+        ? 'Tahniah & Selamat Pengantin Baru Nafisya & Umar! Semoga berbahagia hingga ke anak cucu.'
+        : 'Tahniah Nafisya & Umar! Mendoakan kelancaran dan keberkatan buat kedua mempelai.');
+
+      const newWish = {
+        name: guestName,
+        attendance: attendance,
+        message: wishText,
+        time: 'Baru sahaja'
+      };
+
+      const currentWishes = getStoredWishes();
+      currentWishes.unshift(newWish);
+      saveWishes(currentWishes);
+      renderWishes();
+
       // Transition to success screen
       rsvpForm.style.display = 'none';
-      if (rsvpSuccess) rsvpSuccess.style.display = 'block';
+      if (rsvpSuccess) {
+        rsvpSuccess.innerHTML = `
+          <h3>Terima Kasih!</h3>
+          <p>Pengesahan kehadiran anda telah selamat kami terima. Kami amat berbesar hati untuk meraikan hari bahagia ini bersama anda!</p>
+          <div style="margin-top: 22px;">
+            <a href="#wishes" style="display: inline-block; padding: 10px 24px; border: 1px solid #bd8562; border-radius: 4px; color: #6f3f01; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; background: rgba(189, 133, 98, 0.1);">Lihat Ucapan Anda di Ucapan Terkini &darr;</a>
+          </div>
+        `;
+        rsvpSuccess.style.display = 'block';
+      }
     });
   }
 
