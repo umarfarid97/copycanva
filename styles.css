@@ -633,31 +633,17 @@ button {
   width: auto;
 }
 
-.dress-icons-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: clamp(10px, 2.5vw, 24px);
+.attire-theme-img {
+  max-height: 100%;
   max-width: 100%;
-}
-
-.icon-attire {
-  max-height: 90%;
   width: auto;
+  height: auto;
   object-fit: contain;
-  flex-shrink: 1;
-}
-
-.attire-couple-img {
-  max-height: 96%;
-  width: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(111, 63, 1, 0.12));
   transition: transform 0.3s ease;
 }
 
-.attire-couple-img:hover {
-  transform: scale(1.04);
+.attire-theme-img:hover {
+  transform: scale(1.03);
 }
 
 .details-title {
