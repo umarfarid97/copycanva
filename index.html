@@ -15,6 +15,35 @@
 </head>
 <body>
 
+  <!-- ==================== VIDEO INTRO SPLASH SCREEN ==================== -->
+  <div id="videoIntroOverlay" class="video-intro-overlay">
+    <div class="video-container">
+      <video id="introVideo" class="intro-video" playsinline preload="auto" muted autoplay>
+        <source src="assets/media/intro.mp4" type="video/mp4">
+        Pelayar anda tidak menyokong tag video.
+      </video>
+      
+      <!-- Video Controls: Skip & Sound Toggle -->
+      <div class="video-overlay-controls">
+        <button id="unmuteBtn" class="video-ctrl-btn" type="button" aria-label="Buka Bunyi" title="Buka Bunyi">
+          <svg class="icon-sound" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+          <span id="soundLabel">Buka Bunyi</span>
+        </button>
+        
+        <button id="skipVideoBtn" class="video-ctrl-btn skip-btn" type="button" aria-label="Langkau ke Laman Utama">
+          <span>Langkau</span> &rarr;
+        </button>
+      </div>
+
+      <!-- Play prompt fallback if browser requires user interaction -->
+      <div id="playPrompt" class="play-prompt" style="display: none;">
+        <button id="startPlayBtn" class="btn-rsvp" type="button">Tonton Video</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Navigation Bar -->
   <header class="site-header" id="navbar">
     <nav class="nav-container">

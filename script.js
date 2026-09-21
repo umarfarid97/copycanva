@@ -3,6 +3,67 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // --- 0. Video Intro Splash Screen Logic ---
+  const videoIntroOverlay = document.getElementById('videoIntroOverlay');
+  const introVideo = document.getElementById('introVideo');
+  const unmuteBtn = document.getElementById('unmuteBtn');
+  const soundLabel = document.getElementById('soundLabel');
+  const skipVideoBtn = document.getElementById('skipVideoBtn');
+  const playPrompt = document.getElementById('playPrompt');
+  const startPlayBtn = document.getElementById('startPlayBtn');
+
+  if (videoIntroOverlay && introVideo) {
+    let hasTransitioned = false;
+
+    const transitionToMainPage = () => {
+      if (hasTransitioned) return;
+      hasTransitioned = true;
+
+      videoIntroOverlay.classList.add('fade-out');
+      setTimeout(() => {
+        videoIntroOverlay.style.display = 'none';
+        introVideo.pause();
+      }, 850);
+    };
+
+    // Auto transition to main page once video finishes
+    introVideo.addEventListener('ended', transitionToMainPage);
+
+    // Skip button
+    if (skipVideoBtn) {
+      skipVideoBtn.addEventListener('click', transitionToMainPage);
+    }
+
+    // Sound toggle button
+    if (unmuteBtn) {
+      unmuteBtn.addEventListener('click', () => {
+        if (introVideo.muted) {
+          introVideo.muted = false;
+          if (soundLabel) soundLabel.textContent = 'Matikan Bunyi';
+        } else {
+          introVideo.muted = true;
+          if (soundLabel) soundLabel.textContent = 'Buka Bunyi';
+        }
+      });
+    }
+
+    // Attempt autoplay
+    const playPromise = introVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay blocked by browser policy, show manual play button
+        if (playPrompt) playPrompt.style.display = 'block';
+      });
+    }
+
+    if (startPlayBtn) {
+      startPlayBtn.addEventListener('click', () => {
+        introVideo.play();
+        if (playPrompt) playPrompt.style.display = 'none';
+      });
+    }
+  }
+
   const navbar = document.getElementById('navbar');
   const navToggle = document.getElementById('navToggle');
   const navMenu = document.getElementById('navMenu');
