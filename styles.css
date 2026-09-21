@@ -272,10 +272,13 @@ button {
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 2.1vw, 1.55rem);
-  color: var(--color-dark);
-  max-width: 580px;
-  line-height: 1.45;
+  font-size: clamp(1.2rem, 2.4vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-brown);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  max-width: 680px;
+  line-height: 1.4;
   margin-bottom: clamp(1.8rem, 4vh, 3rem);
 }
 
@@ -294,7 +297,7 @@ button {
 
 .hero-title .name-part {
   font-family: var(--font-title);
-  font-size: clamp(3.8rem, 11vw, 9.5rem);
+  font-size: clamp(3.2rem, 8.5vw, 8.2rem);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: none;
@@ -302,10 +305,10 @@ button {
 
 .hero-title .ampersand {
   font-family: var(--font-script);
-  font-size: clamp(3.6rem, 10vw, 8.8rem);
+  font-size: clamp(3.2rem, 8vw, 7.8rem);
   font-weight: 400;
   color: var(--color-brown);
-  transform: translateY(-0.08em);
+  transform: translateY(-0.06em);
 }
 
 .hero-datetime {
@@ -313,7 +316,7 @@ button {
   font-size: clamp(1.3rem, 2.4vw, 1.95rem);
   font-weight: 600;
   color: var(--color-dark);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   margin-bottom: clamp(2rem, 4vh, 3.2rem);
 }
 
