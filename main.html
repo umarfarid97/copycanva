@@ -11,21 +11,47 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=1.5">
+  <link rel="stylesheet" href="styles.css?v=1.6">
   <style>
     .rsvp-form-card {
-      background: var(--bg-secondary);
-      border: 1px solid rgba(189, 133, 98, 0.35);
-      border-radius: 8px;
-      padding: clamp(22px, 4vw, 36px);
-      box-shadow: 0 6px 24px rgba(111, 63, 1, 0.08);
-      margin-top: 1rem;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      max-width: 520px;
+      margin-top: 1.5rem;
     }
 
     .rsvp-form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
+    }
+
+    .rsvp-form .form-group input,
+    .rsvp-form .form-group textarea {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      font-size: 0.95rem !important;
+      padding: 11px 14px !important;
+      border: 1px solid rgba(111, 63, 1, 0.3) !important;
+      border-radius: 4px !important;
+      background: transparent !important;
+      color: #1b1b1b !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .rsvp-form .form-group input::placeholder,
+    .rsvp-form .form-group textarea::placeholder {
+      color: rgba(111, 63, 1, 0.45) !important;
+    }
+
+    .rsvp-form .form-group input:focus,
+    .rsvp-form .form-group textarea:focus {
+      outline: none !important;
+      border-color: #bd8562 !important;
+      background: transparent !important;
+      box-shadow: 0 0 0 2px rgba(189, 133, 98, 0.18) !important;
     }
 
     .radio-horizontal {

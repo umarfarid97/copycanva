@@ -1043,17 +1043,18 @@ button {
 }
 
 .rsvp-form-card {
-  background: var(--bg-secondary);
-  border: 1px solid rgba(189, 133, 98, 0.35);
-  border-radius: 8px;
-  padding: clamp(22px, 4vw, 36px);
-  box-shadow: 0 6px 24px rgba(111, 63, 1, 0.08);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  max-width: 520px;
 }
 
 .rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .radio-horizontal {
@@ -1081,12 +1082,26 @@ button {
 .form-group textarea {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  padding: 10px 14px;
-  border: 1px solid rgba(189, 133, 98, 0.4);
+  padding: 11px 14px;
+  border: 1px solid rgba(111, 63, 1, 0.3);
   border-radius: 4px;
-  background: #ffffff;
+  background: transparent;
   color: var(--color-dark);
   transition: var(--transition-smooth);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(111, 63, 1, 0.45);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-terracotta);
+  background: transparent;
+  box-shadow: 0 0 0 2px rgba(189, 133, 98, 0.15);
 }
 
 .form-group input:focus,
