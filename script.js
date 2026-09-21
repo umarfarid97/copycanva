@@ -108,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Clear legacy mock wishes
   try {
     localStorage.removeItem('wedding_wishes_nafisya_umar_v4');
+    localStorage.removeItem('wedding_wishes_live_v2');
   } catch (e) {}
 
   function getStoredWishes() {
@@ -273,26 +274,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      // Link wish with phone number so updates replace previous wish instead of duplicating
-      const wishText = guestMessage || (attendance === 'Hadir'
-        ? 'Tahniah & Selamat Pengantin Baru Nafisya & Umar! Semoga berbahagia hingga ke anak cucu.'
-        : 'Tahniah Nafisya & Umar! Mendoakan kelancaran dan keberkatan buat kedua mempelai.');
+      // Only record wish if guest actually provided a message (no hardcoded/fallback text)
+      if (guestMessage) {
+        const currentWishes = getStoredWishes();
+        const existingWishIndex = normalizedPhone ? currentWishes.findIndex(w => w.phone && w.phone === normalizedPhone) : -1;
+        const newWish = {
+          name: guestName,
+          phone: normalizedPhone,
+          message: guestMessage
+        };
 
-      const currentWishes = getStoredWishes();
-      const existingWishIndex = normalizedPhone ? currentWishes.findIndex(w => w.phone && w.phone === normalizedPhone) : -1;
-      const newWish = {
-        name: guestName,
-        phone: normalizedPhone,
-        message: wishText
-      };
-
-      if (existingWishIndex !== -1) {
-        currentWishes[existingWishIndex] = newWish;
-      } else {
-        currentWishes.unshift(newWish);
+        if (existingWishIndex !== -1) {
+          currentWishes[existingWishIndex] = newWish;
+        } else {
+          currentWishes.unshift(newWish);
+        }
+        saveWishes(currentWishes);
+        renderWishes();
       }
-      saveWishes(currentWishes);
-      renderWishes();
 
       // Transition to success screen after short delay
       setTimeout(() => {
