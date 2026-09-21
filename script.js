@@ -122,6 +122,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
+  function normalizePhone(phone) {
+    if (!phone) return '';
+    let cleaned = String(phone).replace(/[^\d+]/g, '');
+    if (cleaned.startsWith('+')) {
+      cleaned = cleaned.substring(1);
+    }
+    if (cleaned.startsWith('0')) {
+      cleaned = '6' + cleaned;
+    }
+    return cleaned;
+  }
+
+  function getStoredRSVPs() {
+    try {
+      const stored = localStorage.getItem('wedding_rsvps_nafisya_umar_v1');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {
+      console.warn('Could not read RSVPs from localStorage', e);
+    }
+    return [];
+  }
+
+  function saveRSVPs(rsvps) {
+    try {
+      localStorage.setItem('wedding_rsvps_nafisya_umar_v1', JSON.stringify(rsvps));
+    } catch (e) {
+      console.warn('Could not save RSVPs to localStorage', e);
+    }
+  }
+
   function getStoredWishes() {
     try {
       const stored = localStorage.getItem('wedding_wishes_nafisya_umar_v4');
@@ -192,20 +222,54 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('RSVP Submission received:', data);
 
       const guestName = (data.guestName || '').trim() || 'Tetamu';
+      const rawPhone = (data.guestPhone || '').trim();
+      const normalizedPhone = normalizePhone(rawPhone);
       const attendance = data.attendance || 'Hadir';
       const guestMessage = (data.guestMessage || '').trim();
+      const guestCount = attendance === 'Hadir' ? (data.guestCount || '1 Orang') : '0 Orang';
 
+      // --- Option B: Upsert by Normalized Phone Number ---
+      const storedRSVPs = getStoredRSVPs();
+      const existingIndex = normalizedPhone ? storedRSVPs.findIndex(r => r.phone === normalizedPhone) : -1;
+      const isUpdate = existingIndex !== -1;
+
+      const rsvpRecord = {
+        name: guestName,
+        rawPhone: rawPhone,
+        phone: normalizedPhone,
+        attendance: attendance,
+        guestCount: guestCount,
+        message: guestMessage,
+        updatedAt: new Date().toISOString()
+      };
+
+      if (isUpdate) {
+        storedRSVPs[existingIndex] = rsvpRecord;
+        console.log(`[RSVP UPSERT] Updated existing record for phone ${normalizedPhone}:`, rsvpRecord);
+      } else {
+        storedRSVPs.unshift(rsvpRecord);
+        console.log(`[RSVP UPSERT] Created new record for phone ${normalizedPhone}:`, rsvpRecord);
+      }
+      saveRSVPs(storedRSVPs);
+
+      // Link wish with phone number so updates replace previous wish instead of duplicating
       const wishText = guestMessage || (attendance === 'Hadir'
         ? 'Tahniah & Selamat Pengantin Baru Nafisya & Umar! Semoga berbahagia hingga ke anak cucu.'
         : 'Tahniah Nafisya & Umar! Mendoakan kelancaran dan keberkatan buat kedua mempelai.');
 
+      const currentWishes = getStoredWishes();
+      const existingWishIndex = normalizedPhone ? currentWishes.findIndex(w => w.phone && w.phone === normalizedPhone) : -1;
       const newWish = {
         name: guestName,
+        phone: normalizedPhone,
         message: wishText
       };
 
-      const currentWishes = getStoredWishes();
-      currentWishes.unshift(newWish);
+      if (existingWishIndex !== -1) {
+        currentWishes[existingWishIndex] = newWish;
+      } else {
+        currentWishes.unshift(newWish);
+      }
       saveWishes(currentWishes);
       renderWishes();
 
@@ -214,13 +278,31 @@ document.addEventListener('DOMContentLoaded', () => {
         rsvpForm.style.display = 'none';
         if (rsvpSuccess) {
           rsvpSuccess.innerHTML = `
-            <h3>Terima Kasih!</h3>
-            <p>Pengesahan kehadiran anda telah selamat kami terima. Kami amat berbesar hati untuk meraikan hari bahagia ini bersama anda!</p>
-            <div style="margin-top: 22px;">
-              <a href="#wishes" style="display: inline-block; padding: 10px 24px; border: 1px solid #bd8562; border-radius: 4px; color: #6f3f01; font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; text-decoration: none; background: rgba(189, 133, 98, 0.1);">Lihat Ucapan Anda di Ucapan Terkini &darr;</a>
+            <h3>${isUpdate ? 'Pengesahan Dikemaskini!' : 'Terima Kasih!'}</h3>
+            <p>${isUpdate 
+              ? `Maklumat kehadiran bagi <strong>${escapeHtml(guestName)}</strong> (${escapeHtml(rawPhone)}) telah berjaya dikemaskini: <strong>${escapeHtml(attendance)}</strong>${attendance === 'Hadir' ? ` (${escapeHtml(guestCount)})` : ''}.`
+              : 'Pengesahan kehadiran anda telah selamat kami terima. Kami amat berbesar hati untuk meraikan hari bahagia ini bersama anda!'
+            }</p>
+            <div style="margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+              <button type="button" id="editRsvpBtn" style="padding: 10px 20px; border: 1px solid #bd8562; border-radius: 4px; color: ${isUpdate ? '#ffffff' : '#6f3f01'}; font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; background: ${isUpdate ? '#bd8562' : 'rgba(189, 133, 98, 0.1)'}; cursor: pointer; transition: all 0.2s ease;">Kemaskini Maklumat</button>
+              <a href="#wishes" style="display: inline-block; padding: 10px 20px; border: 1px solid #bd8562; border-radius: 4px; color: #6f3f01; font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; text-decoration: none; background: rgba(189, 133, 98, 0.1);">Lihat Ucapan Anda &darr;</a>
             </div>
           `;
           rsvpSuccess.style.display = 'block';
+
+          // Allow guest to re-open form and update their answers
+          const editBtn = document.getElementById('editRsvpBtn');
+          if (editBtn) {
+            editBtn.addEventListener('click', () => {
+              rsvpSuccess.style.display = 'none';
+              rsvpForm.style.display = 'flex';
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Kemaskini Kehadiran";
+              }
+              isSubmitting = false;
+            });
+          }
         }
       }, 600);
     });
