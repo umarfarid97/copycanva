@@ -145,20 +145,6 @@
       Pelayar anda tidak menyokong tag video.
     </video>
 
-    <!-- Top Controls: Sound Toggle (Left) & Skip Link (Right) -->
-    <div class="overlay-controls">
-      <button id="unmuteBtn" class="ctrl-btn" type="button" aria-label="Buka Bunyi" title="Buka Bunyi">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-        </svg>
-        <span id="soundLabel">Buka Bunyi</span>
-      </button>
-
-      <a href="main.html" id="skipBtn" class="ctrl-btn skip-btn" aria-label="Langkau ke Laman Utama">
-        <span>Langkau</span> &rarr;
-      </a>
-    </div>
-
     <!-- Fallback if browser policy blocks autoplay -->
     <div id="playFallback" class="play-fallback" style="display: none;">
       <button id="startPlayBtn" class="btn-play-invite" type="button">Buka Jemputan</button>
@@ -169,9 +155,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       const videoWrapper = document.getElementById('videoWrapper');
       const introVideo = document.getElementById('introVideo');
-      const unmuteBtn = document.getElementById('unmuteBtn');
-      const soundLabel = document.getElementById('soundLabel');
-      const skipBtn = document.getElementById('skipBtn');
       const playFallback = document.getElementById('playFallback');
       const startPlayBtn = document.getElementById('startPlayBtn');
 
@@ -185,41 +168,24 @@
         }, 500);
       };
 
-      // 1. When video finishes playing, automatically navigate to main page
+      // 1. Automatically navigate to main page once video finishes playing
       introVideo.addEventListener('ended', goToMainPage);
 
-      // 2. Skip button click
-      if (skipBtn) {
-        skipBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          goToMainPage();
-        });
-      }
+      // 2. Optional: Allow tapping anywhere on screen to enter main page immediately
+      videoWrapper.addEventListener('click', goToMainPage);
 
-      // 3. Unmute / Mute toggle
-      if (unmuteBtn) {
-        unmuteBtn.addEventListener('click', () => {
-          if (introVideo.muted) {
-            introVideo.muted = false;
-            if (soundLabel) soundLabel.textContent = 'Matikan Bunyi';
-          } else {
-            introVideo.muted = true;
-            if (soundLabel) soundLabel.textContent = 'Buka Bunyi';
-          }
-        });
-      }
-
-      // 4. Autoplay handling
+      // 3. Autoplay handling
       const playPromise = introVideo.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
-          // Autoplay was prevented by browser policy, show manual start button
+          // Autoplay was prevented by browser policy, show start button
           if (playFallback) playFallback.style.display = 'flex';
         });
       }
 
       if (startPlayBtn) {
-        startPlayBtn.addEventListener('click', () => {
+        startPlayBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
           introVideo.play();
           if (playFallback) playFallback.style.display = 'none';
         });
