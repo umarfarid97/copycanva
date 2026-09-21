@@ -1071,28 +1071,31 @@ button {
 }
 
 .form-group label {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+  font-weight: 700;
   color: var(--color-brown);
 }
 
 .form-group input:not([type="radio"]):not([type="checkbox"]),
 .form-group select,
 .form-group textarea {
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-  padding: 11px 14px;
-  border: 1px solid rgba(111, 63, 1, 0.3);
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+  padding: 10px 14px;
+  border: 1px solid rgba(111, 63, 1, 0.35);
   border-radius: 4px;
   background: transparent;
   color: var(--color-dark);
-  transition: var(--transition-smooth);
+  transition: border-color 0.2s ease;
 }
 
 .form-group input:not([type="radio"]):not([type="checkbox"])::placeholder,
 .form-group textarea::placeholder {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   color: rgba(111, 63, 1, 0.45);
+  font-style: italic;
 }
 
 .form-group input:not([type="radio"]):not([type="checkbox"]):focus,

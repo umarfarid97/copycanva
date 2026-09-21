@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1128">
+  <link rel="stylesheet" href="styles.css?v=20260921_1135">
   <style>
     .rsvp-form-card {
       background: transparent !important;
@@ -32,12 +32,19 @@
       gap: 18px;
     }
 
+    .rsvp-form .form-group label {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.15rem, 1.5vw, 1.35rem) !important;
+      font-weight: 700 !important;
+      color: #6f3f01 !important;
+    }
+
     .rsvp-form .form-group input:not([type="radio"]):not([type="checkbox"]),
     .rsvp-form .form-group textarea {
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
-      font-size: 0.95rem !important;
-      padding: 11px 14px !important;
-      border: 1px solid rgba(111, 63, 1, 0.3) !important;
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.1rem, 1.5vw, 1.25rem) !important;
+      padding: 10px 14px !important;
+      border: 1px solid rgba(111, 63, 1, 0.35) !important;
       border-radius: 4px !important;
       background: transparent !important;
       color: #1b1b1b !important;
@@ -46,7 +53,10 @@
 
     .rsvp-form .form-group input:not([type="radio"]):not([type="checkbox"])::placeholder,
     .rsvp-form .form-group textarea::placeholder {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem) !important;
       color: rgba(111, 63, 1, 0.45) !important;
+      font-style: italic !important;
     }
 
     .rsvp-form .form-group input:not([type="radio"]):not([type="checkbox"]):focus,
