@@ -1151,6 +1151,70 @@ button {
   flex-shrink: 0;
 }
 
+/* Domino Pattern for Pax Selection */
+.pax-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  max-width: 320px;
+  margin-top: 6px;
+}
+
+.pax-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  border: 1px solid rgba(111, 63, 1, 0.35);
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.pax-box input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  pointer-events: none;
+}
+
+.pax-label {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease;
+}
+
+.pax-box:hover {
+  border-color: var(--color-terracotta);
+  background-color: rgba(189, 133, 98, 0.08);
+}
+
+.pax-box:has(input[type="radio"]:checked),
+.pax-box.checked {
+  background-color: var(--color-terracotta) !important;
+  border-color: var(--color-terracotta) !important;
+  box-shadow: 0 4px 12px rgba(189, 133, 98, 0.25) !important;
+}
+
+.pax-box:has(input[type="radio"]:checked) .pax-label,
+.pax-box.checked .pax-label {
+  color: #ffffff !important;
+}
+
+
 .btn-submit-rsvp {
   font-family: var(--font-serif);
   font-size: 1.25rem;

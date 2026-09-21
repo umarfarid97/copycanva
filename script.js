@@ -88,4 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Domino pax box selection handler
+  const paxBoxes = document.querySelectorAll('.pax-box');
+  paxBoxes.forEach(box => {
+    const radio = box.querySelector('input[type="radio"]');
+    if (radio && radio.checked) box.classList.add('checked');
+    if (radio) {
+      radio.addEventListener('change', () => {
+        paxBoxes.forEach(b => b.classList.remove('checked'));
+        if (radio.checked) box.classList.add('checked');
+      });
+    }
+  });
 });

@@ -103,6 +103,69 @@
       flex-shrink: 0 !important;
     }
 
+    /* Domino Pattern for Pax Selection */
+    .pax-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+      max-width: 320px !important;
+      margin-top: 6px !important;
+    }
+
+    .pax-box {
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 12px 16px !important;
+      border: 1px solid rgba(111, 63, 1, 0.35) !important;
+      border-radius: 6px !important;
+      background: transparent !important;
+      cursor: pointer !important;
+      touch-action: manipulation !important;
+      user-select: none !important;
+      -webkit-user-select: none !important;
+      -webkit-tap-highlight-color: transparent !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .pax-box input[type="radio"] {
+      position: absolute !important;
+      opacity: 0 !important;
+      width: 0 !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      pointer-events: none !important;
+    }
+
+    .pax-label {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: 1.15rem !important;
+      font-weight: 600 !important;
+      color: #1b1b1b !important;
+      letter-spacing: 0.02em !important;
+      transition: color 0.2s ease !important;
+    }
+
+    .pax-box:hover {
+      border-color: #bd8562 !important;
+      background-color: rgba(189, 133, 98, 0.08) !important;
+    }
+
+    .pax-box:has(input[type="radio"]:checked),
+    .pax-box.checked {
+      background-color: #bd8562 !important;
+      border-color: #bd8562 !important;
+      box-shadow: 0 4px 12px rgba(189, 133, 98, 0.25) !important;
+    }
+
+    .pax-box:has(input[type="radio"]:checked) .pax-label,
+    .pax-box.checked .pax-label {
+      color: #ffffff !important;
+    }
+
     .details-list {
       list-style: none;
       padding: 0;
@@ -417,25 +480,25 @@
                 </div>
               </div>
 
-              <!-- Bilangan Tetamu : (Mandatory: in radio button format) -->
+              <!-- Bilangan Tetamu : (Mandatory: in domino rectangle box format) -->
               <div class="form-group" id="guestCountGroup">
                 <label>Bilangan Tetamu *</label>
-                <div class="radio-options radio-horizontal">
-                  <label class="radio-label">
+                <div class="pax-grid">
+                  <label class="pax-box checked">
                     <input type="radio" name="guestCount" value="1 Orang" required checked>
-                    <span>1 Orang</span>
+                    <span class="pax-label">1 Orang</span>
                   </label>
-                  <label class="radio-label">
+                  <label class="pax-box">
                     <input type="radio" name="guestCount" value="2 Orang">
-                    <span>2 Orang</span>
+                    <span class="pax-label">2 Orang</span>
                   </label>
-                  <label class="radio-label">
+                  <label class="pax-box">
                     <input type="radio" name="guestCount" value="3 Orang">
-                    <span>3 Orang</span>
+                    <span class="pax-label">3 Orang</span>
                   </label>
-                  <label class="radio-label">
+                  <label class="pax-box">
                     <input type="radio" name="guestCount" value="4 Orang">
-                    <span>4 Orang</span>
+                    <span class="pax-label">4 Orang</span>
                   </label>
                 </div>
               </div>
