@@ -1151,33 +1151,40 @@ button {
   flex-shrink: 0;
 }
 
-/* Domino Pattern for Pax Selection */
-.pax-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+/* Segmented Control (Checker Box [1|2|3|4]) for Pax Selection */
+.segmented-control {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(111, 63, 1, 0.35);
+  border-radius: 6px;
+  overflow: hidden;
+  background: transparent;
+  width: 100%;
   max-width: 320px;
   margin-top: 6px;
 }
 
-.pax-box {
-  position: relative;
+.segment-btn {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 16px;
-  border: 1px solid rgba(111, 63, 1, 0.35);
-  border-radius: 6px;
-  background: transparent;
+  padding: 11px 0;
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
+  border-right: 1px solid rgba(111, 63, 1, 0.35);
+  background: transparent;
   transition: all 0.2s ease;
 }
 
-.pax-box input[type="radio"] {
+.segment-btn:last-child {
+  border-right: none;
+}
+
+.segment-btn input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
@@ -1188,30 +1195,27 @@ button {
   pointer-events: none;
 }
 
-.pax-label {
+.segment-btn span {
   font-family: var(--font-serif);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-dark);
-  letter-spacing: 0.02em;
   transition: color 0.2s ease;
 }
 
-.pax-box:hover {
-  border-color: var(--color-terracotta);
-  background-color: rgba(189, 133, 98, 0.08);
+.segment-btn:hover {
+  background-color: rgba(189, 133, 98, 0.1);
 }
 
-.pax-box:has(input[type="radio"]:checked),
-.pax-box.checked {
+.segment-btn:has(input[type="radio"]:checked),
+.segment-btn.active {
   background-color: var(--color-terracotta) !important;
-  border-color: var(--color-terracotta) !important;
-  box-shadow: 0 4px 12px rgba(189, 133, 98, 0.25) !important;
 }
 
-.pax-box:has(input[type="radio"]:checked) .pax-label,
-.pax-box.checked .pax-label {
+.segment-btn:has(input[type="radio"]:checked) span,
+.segment-btn.active span {
   color: #ffffff !important;
+  font-weight: 700 !important;
 }
 
 

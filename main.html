@@ -103,33 +103,40 @@
       flex-shrink: 0 !important;
     }
 
-    /* Domino Pattern for Pax Selection */
-    .pax-grid {
-      display: grid !important;
-      grid-template-columns: repeat(2, 1fr) !important;
-      gap: 10px !important;
+    /* Segmented Control (Checker Box [1|2|3|4]) for Pax Selection */
+    .segmented-control {
+      display: inline-flex !important;
+      align-items: stretch !important;
+      border: 1px solid rgba(111, 63, 1, 0.35) !important;
+      border-radius: 6px !important;
+      overflow: hidden !important;
+      background: transparent !important;
+      width: 100% !important;
       max-width: 320px !important;
       margin-top: 6px !important;
     }
 
-    .pax-box {
-      position: relative !important;
+    .segment-btn {
+      flex: 1 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
-      padding: 12px 16px !important;
-      border: 1px solid rgba(111, 63, 1, 0.35) !important;
-      border-radius: 6px !important;
-      background: transparent !important;
+      padding: 11px 0 !important;
       cursor: pointer !important;
       touch-action: manipulation !important;
       user-select: none !important;
       -webkit-user-select: none !important;
       -webkit-tap-highlight-color: transparent !important;
+      border-right: 1px solid rgba(111, 63, 1, 0.35) !important;
+      background: transparent !important;
       transition: all 0.2s ease !important;
     }
 
-    .pax-box input[type="radio"] {
+    .segment-btn:last-child {
+      border-right: none !important;
+    }
+
+    .segment-btn input[type="radio"] {
       position: absolute !important;
       opacity: 0 !important;
       width: 0 !important;
@@ -140,30 +147,27 @@
       pointer-events: none !important;
     }
 
-    .pax-label {
+    .segment-btn span {
       font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: 1.15rem !important;
+      font-size: 1.25rem !important;
       font-weight: 600 !important;
       color: #1b1b1b !important;
-      letter-spacing: 0.02em !important;
       transition: color 0.2s ease !important;
     }
 
-    .pax-box:hover {
-      border-color: #bd8562 !important;
-      background-color: rgba(189, 133, 98, 0.08) !important;
+    .segment-btn:hover {
+      background-color: rgba(189, 133, 98, 0.1) !important;
     }
 
-    .pax-box:has(input[type="radio"]:checked),
-    .pax-box.checked {
+    .segment-btn:has(input[type="radio"]:checked),
+    .segment-btn.active {
       background-color: #bd8562 !important;
-      border-color: #bd8562 !important;
-      box-shadow: 0 4px 12px rgba(189, 133, 98, 0.25) !important;
     }
 
-    .pax-box:has(input[type="radio"]:checked) .pax-label,
-    .pax-box.checked .pax-label {
+    .segment-btn:has(input[type="radio"]:checked) span,
+    .segment-btn.active span {
       color: #ffffff !important;
+      font-weight: 700 !important;
     }
 
     .details-list {
@@ -480,25 +484,25 @@
                 </div>
               </div>
 
-              <!-- Bilangan Tetamu : (Mandatory: in domino rectangle box format) -->
+              <!-- Bilangan Tetamu : (Mandatory: in checker box [1|2|3|4] format) -->
               <div class="form-group" id="guestCountGroup">
                 <label>Bilangan Tetamu *</label>
-                <div class="pax-grid">
-                  <label class="pax-box checked">
+                <div class="segmented-control">
+                  <label class="segment-btn active">
                     <input type="radio" name="guestCount" value="1 Orang" required checked>
-                    <span class="pax-label">1 Orang</span>
+                    <span>1</span>
                   </label>
-                  <label class="pax-box">
+                  <label class="segment-btn">
                     <input type="radio" name="guestCount" value="2 Orang">
-                    <span class="pax-label">2 Orang</span>
+                    <span>2</span>
                   </label>
-                  <label class="pax-box">
+                  <label class="segment-btn">
                     <input type="radio" name="guestCount" value="3 Orang">
-                    <span class="pax-label">3 Orang</span>
+                    <span>3</span>
                   </label>
-                  <label class="pax-box">
+                  <label class="segment-btn">
                     <input type="radio" name="guestCount" value="4 Orang">
-                    <span class="pax-label">4 Orang</span>
+                    <span>4</span>
                   </label>
                 </div>
               </div>
