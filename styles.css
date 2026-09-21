@@ -872,7 +872,7 @@ button {
 
 .wishes-subtitle {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   color: var(--color-brown);
   font-style: italic;
   margin-top: 0.35rem;
@@ -904,7 +904,7 @@ button {
 .wishes-list {
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.4rem;
 }
 
 .wish-card {
@@ -912,7 +912,7 @@ button {
   border: none;
   border-bottom: 1px solid rgba(189, 133, 98, 0.25);
   border-radius: 0;
-  padding: 0 0 1.8rem 0;
+  padding: 0 0 1.4rem 0;
   box-shadow: none;
   transition: none;
 }
@@ -931,12 +931,12 @@ button {
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.4rem;
 }
 
 .wish-sender {
   font-family: var(--font-serif);
-  font-size: clamp(1.35rem, 2.1vw, 1.85rem);
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
   font-weight: 700;
   color: var(--color-brown);
   margin: 0;
@@ -945,9 +945,9 @@ button {
 
 .wish-text {
   font-family: var(--font-serif);
-  font-size: clamp(1.08rem, 1.5vw, 1.3rem);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   color: var(--color-dark);
-  line-height: 1.6;
+  line-height: 1.55;
   font-style: normal;
   margin: 0;
 }
@@ -955,7 +955,7 @@ button {
 .wish-time {
   display: inline-block;
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: rgba(111, 63, 1, 0.5);
   margin: 0;
   white-space: nowrap;
