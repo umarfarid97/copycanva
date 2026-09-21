@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
   async function fetchWishesFromSheet() {
     if (!GOOGLE_SHEETS_ENDPOINT) return;
     try {
-      const response = await fetch(GOOGLE_SHEETS_ENDPOINT);
+      const response = await fetch(`${GOOGLE_SHEETS_ENDPOINT}?t=${Date.now()}`);
       const result = await response.json();
       if (result && result.status === 'success' && Array.isArray(result.data)) {
         saveWishes(result.data);
@@ -246,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
           name: guestName,
           guestPhone: rawPhone,
           phone: rawPhone,
+          normalizedPhone: normalizedPhone,
           attendance: attendance,
           status: attendance,
           guestCount: guestCount,
@@ -264,6 +265,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.json())
         .then(result => {
           console.log('[Google Sheets] Synced successfully:', result);
+          // Refresh wishes list from Google Sheets
+          fetchWishesFromSheet();
         })
         .catch(err => {
           console.warn('[Google Sheets] Sync note:', err);
