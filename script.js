@@ -224,4 +224,50 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
+
+  // --- 4. Scroll-Triggered Fade In & Out Animations ---
+  const scrollElements = document.querySelectorAll('.scroll-reveal');
+
+  if (scrollElements.length > 0 && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('js-scroll-anim');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-30px 0px -30px 0px',
+      threshold: [0, 0.15]
+    };
+
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          el.classList.add('in-view');
+          el.classList.remove('out-top', 'out-bottom');
+        } else {
+          el.classList.remove('in-view');
+          if (entry.boundingClientRect.top < 0) {
+            el.classList.add('out-top');
+            el.classList.remove('out-bottom');
+          } else {
+            el.classList.add('out-bottom');
+            el.classList.remove('out-top');
+          }
+        }
+      });
+    }, observerOptions);
+
+    scrollElements.forEach(el => {
+      // Check initial position on page load
+      const rect = el.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top < windowHeight - 30 && rect.bottom > 30) {
+        el.classList.add('in-view');
+      } else if (rect.top < 0) {
+        el.classList.add('out-top');
+      } else {
+        el.classList.add('out-bottom');
+      }
+      scrollObserver.observe(el);
+    });
+  }
 });
