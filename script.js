@@ -185,11 +185,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function renderWishes() {
+  function renderWishes(customWishes) {
     const wishesList = document.getElementById('wishesList');
     if (!wishesList) return;
 
-    const wishes = getStoredWishes();
+    const wishes = Array.isArray(customWishes) && customWishes.length > 0 ? customWishes : getStoredWishes();
     wishesList.innerHTML = wishes.map(wish => `
       <div class="wish-card">
         <h3 class="wish-sender">${escapeHtml(wish.name)}</h3>
@@ -198,10 +198,28 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
   }
 
-  // Initial render of wishes
+  // Initial instant render from cache/defaults
   renderWishes();
 
   const GOOGLE_SHEETS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyJJXD4MNCT_oQy1SYQe61i06Vl7jbuLIKjQUodlDYolQg1ATnAvdkd3GAL111_Yqxg/exec';
+
+  // Fetch live wishes directly from Google Sheets
+  async function fetchWishesFromSheet() {
+    if (!GOOGLE_SHEETS_ENDPOINT) return;
+    try {
+      const response = await fetch(GOOGLE_SHEETS_ENDPOINT);
+      const result = await response.json();
+      if (result && result.status === 'success' && Array.isArray(result.data) && result.data.length > 0) {
+        saveWishes(result.data);
+        renderWishes(result.data);
+        console.log('[Google Sheets] Loaded live wishes from sheet:', result.data.length);
+      }
+    } catch (err) {
+      console.warn('[Google Sheets] Live wishes fetch note (using cached/default):', err);
+    }
+  }
+
+  fetchWishesFromSheet();
 
   if (rsvpForm) {
     let isSubmitting = false;
