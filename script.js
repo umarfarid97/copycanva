@@ -63,64 +63,53 @@ document.addEventListener('DOMContentLoaded', () => {
   const defaultWishes = [
     {
       name: "Ahmad Zaki & Keluarga",
-      message: "Selamat Pengantin Baru Nafisya & Umar! Semoga ikatan perkahwinan ini berkekalan hingga ke anak cucu dan sentiasa diberkati Allah SWT. Barakallahu lakuma!",
-      time: "2 jam yang lalu"
+      message: "Selamat Pengantin Baru Nafisya & Umar! Semoga ikatan perkahwinan ini berkekalan hingga ke anak cucu dan sentiasa diberkati Allah SWT. Barakallahu lakuma!"
     },
     {
       name: "Siti Sarah & Suami",
-      message: "Tahniah Nafisya & Umar! Cantik sama padan, bagai pinang dibelah dua. Semoga rumah tangga yang dibina sentiasa dipenuhi sakinah, mawaddah wa rahmah.",
-      time: "4 jam yang lalu"
+      message: "Tahniah Nafisya & Umar! Cantik sama padan, bagai pinang dibelah dua. Semoga rumah tangga yang dibina sentiasa dipenuhi sakinah, mawaddah wa rahmah."
     },
     {
       name: "Farhan & Rakan-rakan",
-      message: "Tahniah sahabatku Umar & pasangan Nafisya! Semoga dipermudahkan segala urusan menuju hari bahagia. Tak sabar nak raikan korang nanti!",
-      time: "Semalam"
+      message: "Tahniah sahabatku Umar & pasangan Nafisya! Semoga dipermudahkan segala urusan menuju hari bahagia. Tak sabar nak raikan korang nanti!"
     },
     {
       name: "Nurul Izzah",
-      message: "Barakallah! Semoga bahtera perkahwinan ini sentiasa dilimpahi rezeki yang melimpah ruah dan kebahagiaan yang berpanjangan dunia akhirat.",
-      time: "Semalam"
+      message: "Barakallah! Semoga bahtera perkahwinan ini sentiasa dilimpahi rezeki yang melimpah ruah dan kebahagiaan yang berpanjangan dunia akhirat."
     },
     {
       name: "Pak Teh & Mak Teh",
-      message: "Selamat melangkah ke alam perkahwinan buat Nafisya & Umar. Semoga saling melengkapi dan berbahagia bersama hingga ke syurga.",
-      time: "2 hari yang lalu"
+      message: "Selamat melangkah ke alam perkahwinan buat Nafisya & Umar. Semoga saling melengkapi dan berbahagia bersama hingga ke syurga."
     },
     {
       name: "Hafiz & Amira",
-      message: "Tahniah kedua mempelai! Semoga mahligai yang dibina sentiasa disinari kasih sayang, persefahaman, dan ketenangan jiwa.",
-      time: "2 hari yang lalu"
+      message: "Tahniah kedua mempelai! Semoga mahligai yang dibina sentiasa disinari kasih sayang, persefahaman, dan ketenangan jiwa."
     },
     {
       name: "Dr. Ridzwan & Dr. Farah",
-      message: "Selamat Pengantin Baru! Semoga ikatan suci ini menjadi jambatan kebaikan dan rahmat buat kedua-dua keluarga besar.",
-      time: "3 hari yang lalu"
+      message: "Selamat Pengantin Baru! Semoga ikatan suci ini menjadi jambatan kebaikan dan rahmat buat kedua-dua keluarga besar."
     },
     {
       name: "Khairul Annuar",
-      message: "Tahniah Umar & Nafisya! Selamat menempuh fasa baru dalam kehidupan. Moga kekal bahagia hingga ke jannah, insya-Allah.",
-      time: "3 hari yang lalu"
+      message: "Tahniah Umar & Nafisya! Selamat menempuh fasa baru dalam kehidupan. Moga kekal bahagia hingga ke jannah, insya-Allah."
     },
     {
       name: "Ainul Mardhiah",
-      message: "Alhamdulillah, tahniah Nafisya si pengantin yang anggun & pasangan Umar! Semoga sentiasa dalam lindungan dan rahmat-Nya sentiasa.",
-      time: "4 hari yang lalu"
+      message: "Alhamdulillah, tahniah Nafisya si pengantin yang anggun & pasangan Umar! Semoga sentiasa dalam lindungan dan rahmat-Nya sentiasa."
     },
     {
       name: "Aiman Hakim & Batch 2019",
-      message: "Congrats bro Umar & Nafisya! Akhirnya selamat disatukan. Semoga rumahtangga sentiasa ceria, harmoni dan dilimpahi rezeki.",
-      time: "5 hari yang lalu"
+      message: "Congrats bro Umar & Nafisya! Akhirnya selamat disatukan. Semoga rumahtangga sentiasa ceria, harmoni dan dilimpahi rezeki."
     },
     {
       name: "Hajah Rokiah",
-      message: "Syukur Alhamdulillah. Selamat menempuh alam rumahtangga buat cucunda Nafisya dan Umar. Semoga berkekalan hingga ke hujung nyawa.",
-      time: "6 hari yang lalu"
+      message: "Syukur Alhamdulillah. Selamat menempuh alam rumahtangga buat cucunda Nafisya dan Umar. Semoga berkekalan hingga ke hujung nyawa."
     }
   ];
 
   function getStoredWishes() {
     try {
-      const stored = localStorage.getItem('wedding_wishes_nafisya_umar_v3');
+      const stored = localStorage.getItem('wedding_wishes_nafisya_umar_v4');
       if (stored) {
         return JSON.parse(stored);
       }
@@ -132,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function saveWishes(wishes) {
     try {
-      localStorage.setItem('wedding_wishes_nafisya_umar_v3', JSON.stringify(wishes));
+      localStorage.setItem('wedding_wishes_nafisya_umar_v4', JSON.stringify(wishes));
     } catch (e) {
       console.warn('Could not save wishes to localStorage', e);
     }
@@ -158,10 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const wishes = getStoredWishes();
     wishesList.innerHTML = wishes.map(wish => `
       <div class="wish-card">
-        <div class="wish-header">
-          <h3 class="wish-sender">${escapeHtml(wish.name)}</h3>
-          <span class="wish-time">${escapeHtml(wish.time || 'Baru sahaja')}</span>
-        </div>
+        <h3 class="wish-sender">${escapeHtml(wish.name)}</h3>
         <p class="wish-text">${escapeHtml(wish.message)}</p>
       </div>
     `).join('');
@@ -188,8 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const newWish = {
         name: guestName,
-        message: wishText,
-        time: 'Baru sahaja'
+        message: wishText
       };
 
       const currentWishes = getStoredWishes();
