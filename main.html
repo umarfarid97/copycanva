@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1152">
+  <link rel="stylesheet" href="styles.css?v=20260921_1156">
   <style>
     .rsvp-form-card {
       background: transparent !important;
@@ -356,6 +356,44 @@
       color: rgba(111, 63, 1, 0.5) !important;
       margin: 0 !important;
       white-space: nowrap !important;
+    }
+
+    /* Contact Section - Name & Number Side-by-Side */
+    .contact-cards-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+      margin-bottom: 2.5rem !important;
+      max-width: 500px !important;
+    }
+
+    .contact-card {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+      gap: 12px !important;
+    }
+
+    .contact-person-name {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.25rem, 1.8vw, 1.6rem) !important;
+      font-weight: 700 !important;
+      color: #6f3f01 !important;
+      margin: 0 !important;
+      min-width: 105px !important;
+    }
+
+    .contact-phone-link {
+      font-family: 'Cormorant Garamond', Georgia, serif !important;
+      font-size: clamp(1.2rem, 1.7vw, 1.55rem) !important;
+      color: #1b1b1b !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease !important;
+    }
+
+    .contact-phone-link:hover {
+      color: #bd8562 !important;
+      text-decoration: underline !important;
     }
   </style>
 </head>
@@ -769,30 +807,24 @@
           </p>
         </div>
 
-        <!-- 3 Contact Columns -->
+        <!-- 3 Contacts (Name and number side-by-side) -->
         <div class="contact-cards-grid">
           <!-- Masnimei -->
           <div class="contact-card">
-            <h3 class="contact-person-name">Masnimei</h3>
-            <ul class="contact-methods-list">
-              <li><a href="tel:0126629233">012 662 9233</a></li>
-            </ul>
+            <span class="contact-person-name">Masnimei:</span>
+            <a href="tel:0126629233" class="contact-phone-link">012 662 9233</a>
           </div>
 
           <!-- Adam -->
           <div class="contact-card">
-            <h3 class="contact-person-name">Adam</h3>
-            <ul class="contact-methods-list">
-              <li><a href="tel:0106676404">010 667 6404</a></li>
-            </ul>
+            <span class="contact-person-name">Adam:</span>
+            <a href="tel:0106676404" class="contact-phone-link">010 667 6404</a>
           </div>
 
           <!-- Eiman -->
           <div class="contact-card">
-            <h3 class="contact-person-name">Eiman</h3>
-            <ul class="contact-methods-list">
-              <li><a href="tel:0174873402">017 487 3402</a></li>
-            </ul>
+            <span class="contact-person-name">Eiman:</span>
+            <a href="tel:0174873402" class="contact-phone-link">017 487 3402</a>
           </div>
         </div>
 
@@ -803,7 +835,7 @@
 
         <!-- Wedding Hashtag -->
         <div class="contact-hashtag-wrap">
-          <p class="contact-hashtag">#NafisyaUmar</p>
+          <p class="contact-hashtag">#UmarriedToDina</p>
         </div>
       </div>
     </section>
