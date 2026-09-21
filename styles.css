@@ -1719,12 +1719,26 @@ html.js-scroll-anim .scroll-reveal.delay-3 {
   transition-delay: 0.54s;
 }
 
+/* Synchronize hero corner vectors with hero container scroll state */
+.hero-dec {
+  transition: 
+    opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+html.js-scroll-anim .section-hero:has(.hero-container.out-top) .hero-dec {
+  opacity: 0;
+  transform: translateY(-28px);
+}
+
 /* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   html.js-scroll-anim .scroll-reveal,
   html.js-scroll-anim .scroll-reveal.in-view,
   html.js-scroll-anim .scroll-reveal.out-top,
-  html.js-scroll-anim .scroll-reveal.out-bottom {
+  html.js-scroll-anim .scroll-reveal.out-bottom,
+  .hero-dec {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
