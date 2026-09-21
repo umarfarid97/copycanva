@@ -462,4 +462,51 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollObserver.observe(el);
     });
   }
+
+  // --- 5. Wedding Countdown Timer ("Menghitung Hari") ---
+  function initWeddingCountdown() {
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMinutes = document.getElementById('cdMinutes');
+    const cdSeconds = document.getElementById('cdSeconds');
+    const countdownContainer = document.getElementById('weddingCountdown');
+
+    if (!cdDays || !cdHours || !cdMinutes || !cdSeconds) return;
+
+    // Target wedding date: 2 Januari 2027, 11:00 AM (MYT, GMT+8)
+    const weddingDate = new Date('2027-01-02T11:00:00+08:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance <= 0) {
+        cdDays.textContent = '00';
+        cdHours.textContent = '00';
+        cdMinutes.textContent = '00';
+        cdSeconds.textContent = '00';
+        if (countdownContainer) {
+          const title = countdownContainer.querySelector('.countdown-title');
+          if (title) title.textContent = 'Hari Bahagia Telah Tiba!';
+        }
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      cdDays.textContent = days < 10 ? '0' + days : String(days);
+      cdHours.textContent = hours < 10 ? '0' + hours : String(hours);
+      cdMinutes.textContent = minutes < 10 ? '0' + minutes : String(minutes);
+      cdSeconds.textContent = seconds < 10 ? '0' + seconds : String(seconds);
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  initWeddingCountdown();
 });
+
