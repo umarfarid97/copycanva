@@ -43,7 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- 2. Mobile Menu Toggle ---
+  // --- 2. Top-Right RSVP Button Smooth Scroll ---
+  const navRsvpBtn = document.getElementById('navRsvpBtn');
+  if (navRsvpBtn) {
+    navRsvpBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const rsvpSection = document.getElementById('rsvp');
+      if (rsvpSection) {
+        rsvpSection.scrollIntoView({ behavior: 'smooth' });
+        if (history.pushState) {
+          history.pushState(null, null, '#rsvp');
+        }
+      }
+    });
+  }
+
+  // --- Mobile Menu Toggle (if present) ---
   if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
       navMenu.classList.toggle('open');
