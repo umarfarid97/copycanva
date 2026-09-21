@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Scheherazade+New:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Italiana&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=20260921_1530">
+  <link rel="stylesheet" href="styles.css?v=20260921_1535">
   <style>
     @font-face {
       font-family: 'Amiri';
@@ -54,7 +54,7 @@
     .rsvp-form {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 1.1rem;
     }
 
     .rsvp-form .form-group label {
@@ -273,6 +273,70 @@
       font-size: 1.2em;
     }
 
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1), transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .scroll-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-reveal.exit-top {
+      opacity: 0;
+      transform: translateY(-28px);
+    }
+
+    .scroll-reveal.delay-1 {
+      transition-delay: 0.15s;
+    }
+
+    .scroll-reveal.delay-2 {
+      transition-delay: 0.3s;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero-content-wrap {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1), transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .hero-content-wrap.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-content-wrap.exit-top {
+      opacity: 0;
+      transform: translateY(-28px);
+    }
+
+    .hero-dec {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1), transform 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: opacity, transform;
+    }
+
+    .section-hero:has(.hero-content-wrap.visible) .hero-dec {
+      opacity: 0.85;
+      transform: scale(1);
+    }
+
+    .section-hero:has(.hero-content-wrap.exit-top) .hero-dec {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
     .map-links {
       display: -webkit-box;
       display: -webkit-flex;
@@ -348,35 +412,39 @@
     }
 
     .wishes-scroll-container {
-      max-height: 480px;
-      overflow-y: auto;
-      padding-right: 10px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(189, 133, 98, 0.4) transparent;
+      max-height: 480px !important;
+      overflow-y: auto !important;
+      padding-right: 12px !important;
+      -webkit-overflow-scrolling: touch !important;
+      scrollbar-width: thin !important;
+      scrollbar-color: rgba(189, 133, 98, 0.45) transparent !important;
     }
 
     .wishes-scroll-container::-webkit-scrollbar {
-      width: 6px;
+      width: 5px !important;
+    }
+
+    .wishes-scroll-container::-webkit-scrollbar-track {
+      background: transparent !important;
     }
 
     .wishes-scroll-container::-webkit-scrollbar-thumb {
-      background: rgba(189, 133, 98, 0.35);
-      border-radius: 4px;
+      background: rgba(189, 133, 98, 0.4) !important;
+      border-radius: 4px !important;
     }
 
     .wishes-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1.2rem !important;
     }
 
     .wish-card {
       background: transparent !important;
       border: none !important;
-      border-bottom: 1px solid rgba(189, 133, 98, 0.25) !important;
+      border-bottom: 1px solid rgba(189, 133, 98, 0.3) !important;
       border-radius: 0 !important;
-      padding: 0 0 1.4rem 0 !important;
+      padding: 0 0 1.2rem 0 !important;
       box-shadow: none !important;
       transition: none !important;
     }
@@ -473,7 +541,7 @@
 
     .kalam-bismillah-arabic {
       font-family: 'Amiri', serif !important;
-      font-size: clamp(1.2rem, 2.6vw, 1.65rem) !important;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem) !important;
       font-weight: 400 !important;
       color: #6f3f01 !important;
       line-height: 2.1 !important;
@@ -492,7 +560,7 @@
     }
 
     .kalam-arabic-verse {
-      margin: 0 auto 1.2rem auto !important;
+      margin: 0 auto 1.4rem auto !important;
       direction: rtl !important;
       text-align: center !important;
       width: 100% !important;
@@ -504,11 +572,11 @@
 
     .kalam-arabic-verse .arabic-line {
       font-family: 'Amiri', serif !important;
-      font-size: clamp(1.2rem, 2.6vw, 1.65rem) !important;
+      font-size: clamp(1.8rem, 4.4vw, 2.75rem) !important;
       font-weight: 400 !important;
-      line-height: 2.1 !important;
+      line-height: 2.2 !important;
       color: #6f3f01 !important;
-      margin: 0 auto 0.4rem auto !important;
+      margin: 0 auto 0.6rem auto !important;
       text-align: center !important;
       width: 100% !important;
       display: block !important;
@@ -520,7 +588,7 @@
 
     .kalam-translation {
       font-family: 'Cormorant Garamond', Georgia, serif !important;
-      font-size: clamp(1.1rem, 1.6vw, 1.35rem) !important;
+      font-size: clamp(1.05rem, 1.4vw, 1.25rem) !important;
       font-style: italic !important;
       color: #6f3f01 !important;
       line-height: 1.7 !important;
@@ -634,15 +702,15 @@
         
         <p class="kalam-bismillah-sub">DENGAN NAMA ALLAH YANG MAHA PENGASIH LAGI MAHA PENYAYANG</p>
         
-        <div class="kalam-bismillah-arabic" dir="rtl" lang="ar" style="font-family: 'Amiri', serif !important; font-size: clamp(1.2rem, 2.6vw, 1.65rem) !important; font-weight: 400 !important; line-height: 2.1 !important; text-align: center !important; margin: 0 auto 0.8rem auto !important; width: 100% !important; color: #6f3f01 !important;">
+        <div class="kalam-bismillah-arabic" dir="rtl" lang="ar">
           بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
         </div>
 
         <div class="kalam-divider"></div>
 
-        <div class="kalam-arabic-verse" dir="rtl" lang="ar" style="font-family: 'Amiri', serif !important; font-size: clamp(1.2rem, 2.6vw, 1.65rem) !important; font-weight: 400 !important; line-height: 2.1 !important; text-align: center !important; margin: 0 auto 1.2rem auto !important; width: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important;">
-          <p class="arabic-line" style="font-family: 'Amiri', serif !important; font-size: clamp(1.2rem, 2.6vw, 1.65rem) !important; font-weight: 400 !important; line-height: 2.1 !important; text-align: center !important; margin: 0 auto 0.5rem auto !important; width: 100% !important; display: block !important; color: #6f3f01 !important;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
-          <p class="arabic-line" style="font-family: 'Amiri', serif !important; font-size: clamp(1.2rem, 2.6vw, 1.65rem) !important; font-weight: 400 !important; line-height: 2.1 !important; text-align: center !important; margin: 0 auto !important; width: 100% !important; display: block !important; color: #6f3f01 !important;">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+        <div class="kalam-arabic-verse" dir="rtl" lang="ar">
+          <p class="arabic-line">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</p>
+          <p class="arabic-line">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
         </div>
 
         <p class="kalam-translation">
