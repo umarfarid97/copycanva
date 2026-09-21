@@ -830,7 +830,7 @@ button {
    ========================================================================== */
 .section-registry {
   background-color: var(--bg-primary);
-  padding: var(--section-padding);
+  padding: clamp(35px, 5vw, 65px) 24px;
   scroll-margin-top: 75px;
 }
 
@@ -993,7 +993,7 @@ button {
 }
 
 .wishes-scroll-container {
-  max-height: 400px;
+  max-height: 295px;
   overflow-y: auto;
   padding-right: 10px;
   -webkit-overflow-scrolling: touch;
@@ -1017,7 +1017,7 @@ button {
 .wishes-list {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: 0.75rem;
 }
 
 .wish-card {
@@ -1025,7 +1025,7 @@ button {
   border: none;
   border-bottom: 1px solid rgba(189, 133, 98, 0.25);
   border-radius: 0;
-  padding: 0 0 0.9rem 0;
+  padding: 0 0 0.75rem 0;
   box-shadow: none;
   transition: none;
   text-align: center;
@@ -1065,7 +1065,7 @@ button {
    ========================================================================== */
 .section-contact {
   background-color: var(--bg-primary);
-  padding: clamp(50px, 7vw, 90px) 24px 50px;
+  padding: clamp(35px, 5vw, 65px) 24px 35px;
   position: relative;
   overflow: hidden;
 }
@@ -1102,7 +1102,7 @@ button {
 
 .contact-header {
   max-width: 720px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.1rem;
 }
 
 .contact-rsvp-reminder {
@@ -1111,7 +1111,7 @@ button {
   font-weight: 700;
   color: var(--color-brown);
   line-height: 1.25;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.35rem;
 }
 
 .contact-prompt {
@@ -1123,8 +1123,8 @@ button {
 .contact-cards-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  margin-bottom: 2rem;
+  gap: 0.35rem;
+  margin-bottom: 1.2rem;
   max-width: 500px;
 }
 
@@ -1167,7 +1167,7 @@ button {
 }
 
 .contact-hashtag-wrap {
-  margin-top: 1.5rem;
+  margin-top: 0.8rem;
 }
 
 .contact-hashtag {
@@ -1248,7 +1248,7 @@ button {
 .rsvp-form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 0.65rem;
 }
 
 .radio-horizontal {
@@ -1261,7 +1261,8 @@ button {
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 3px;
+  margin-bottom: 0;
 }
 
 .form-group label {
