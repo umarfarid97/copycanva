@@ -1364,11 +1364,11 @@ button {
   display: inline-flex;
   align-items: stretch;
   border: 1px solid rgba(111, 63, 1, 0.35);
-  border-radius: 6px;
+  border-radius: 5px;
   overflow: hidden;
   background: transparent;
   width: 100%;
-  max-width: 320px;
+  max-width: 210px;
   margin-top: 6px;
 }
 
@@ -1377,7 +1377,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 0;
+  padding: 6px 0;
   cursor: pointer;
   touch-action: manipulation;
   user-select: none;
@@ -1405,7 +1405,7 @@ button {
 
 .segment-btn span {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--color-dark);
   transition: color 0.2s ease;
