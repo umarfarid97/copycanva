@@ -455,7 +455,7 @@ button {
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--bg-secondary);
-  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.75), 0 1px 3px rgba(0, 0, 0, 0.9);
+  text-shadow: none;
   margin-bottom: 0.75rem;
   opacity: 0.95;
 }
@@ -488,7 +488,7 @@ button {
   font-weight: 700;
   color: var(--bg-secondary);
   line-height: 0.95;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 1px 4px rgba(0, 0, 0, 0.9);
+  text-shadow: none;
 }
 
 .countdown-unit {
@@ -499,7 +499,7 @@ button {
   color: var(--bg-secondary);
   opacity: 0.92;
   margin-top: 6px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75);
+  text-shadow: none;
 }
 
 .countdown-colon {
@@ -510,7 +510,7 @@ button {
   line-height: 0.95;
   margin-top: -14px;
   user-select: none;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.85);
+  text-shadow: none;
 }
 
 /* ==========================================================================
