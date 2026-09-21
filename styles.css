@@ -1042,9 +1042,24 @@ button {
   color: var(--color-muted);
 }
 
+.rsvp-form-card {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(189, 133, 98, 0.35);
+  border-radius: 8px;
+  padding: clamp(22px, 4vw, 36px);
+  box-shadow: 0 6px 24px rgba(111, 63, 1, 0.08);
+}
+
 .rsvp-form {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+}
+
+.radio-horizontal {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 16px;
 }
 

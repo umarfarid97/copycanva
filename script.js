@@ -59,67 +59,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 3. RSVP Modal Dialog Controls ---
-  if (rsvpModal) {
-    openModalBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        rsvpModal.showModal();
-      });
+  // --- 3. Inline RSVP Form Handling ---
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(rsvpForm);
+      const data = Object.fromEntries(formData.entries());
+      console.log('RSVP Submission received:', data);
+
+      // Transition to success screen
+      rsvpForm.style.display = 'none';
+      if (rsvpSuccess) rsvpSuccess.style.display = 'block';
     });
+  }
 
-    const closeModal = () => {
-      rsvpModal.close();
-      // Reset form view
-      if (rsvpForm && rsvpSuccess) {
-        setTimeout(() => {
-          rsvpForm.style.display = 'flex';
-          rsvpSuccess.style.display = 'none';
-          rsvpForm.reset();
-        }, 300);
-      }
-    };
-
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-    if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeModal);
-
-    // Close when clicking outside modal backdrop
-    rsvpModal.addEventListener('click', (e) => {
-      const rect = rsvpModal.getBoundingClientRect();
-      const isInDialog = (
-        rect.top <= e.clientY &&
-        e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX &&
-        e.clientX <= rect.left + rect.width
-      );
-      if (!isInDialog) {
-        closeModal();
-      }
-    });
-
-    // Handle RSVP Form Submission
-    if (rsvpForm) {
-      rsvpForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const formData = new FormData(rsvpForm);
-        const data = Object.fromEntries(formData.entries());
-        console.log('RSVP Submission received:', data);
-
-        // Transition to success screen
-        rsvpForm.style.display = 'none';
-        rsvpSuccess.style.display = 'block';
-      });
-    }
-
-    // Toggle guest count based on attendance choice
-    const attendanceInputs = document.querySelectorAll('input[name="attendance"]');
-    const guestCountGroup = document.getElementById('guestCountGroup');
+  // Toggle guest count based on attendance choice
+  const attendanceInputs = document.querySelectorAll('input[name="attendance"]');
+  const guestCountGroup = document.getElementById('guestCountGroup');
+  if (attendanceInputs.length > 0 && guestCountGroup) {
     attendanceInputs.forEach(input => {
       input.addEventListener('change', (e) => {
-        if (e.target.value === 'no') {
-          if (guestCountGroup) guestCountGroup.style.display = 'none';
+        if (e.target.value === 'Tidak Hadir' || e.target.value === 'no') {
+          guestCountGroup.style.display = 'none';
         } else {
-          if (guestCountGroup) guestCountGroup.style.display = 'flex';
+          guestCountGroup.style.display = 'flex';
         }
       });
     });
